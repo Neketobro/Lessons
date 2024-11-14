@@ -4,7 +4,7 @@ console.log(typeof 'text');     // String
 console.log(typeof true);       // Boolean
 console.log(typeof Symbol);     // Symbol
 console.log(typeof 10n);        // BigInt
-console.log(typeof null);       // null 
+console.log(typeof null);       // Object 
 console.log(typeof undefined);  // undefiend
 
 // referrals
