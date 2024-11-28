@@ -24,4 +24,4 @@ function printChoise(initialValue) {
     return lastValue;
 };
 
-console.warn(printChoise());
+console.log(printChoise());
