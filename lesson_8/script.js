@@ -9,9 +9,12 @@ let ladder = {
         return this;
     },
     showStep: function () {
+        if (ladder.value < 0) ladder.value = 0;
         console.log(this.value);
         return this;
     },
 };
+
+
 
 ladder.up().up().down().showStep(); // 1
