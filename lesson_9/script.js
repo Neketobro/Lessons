@@ -20,9 +20,21 @@ const conmpany = {
 }
 
 function totalSales(company) {
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-    }
+    if (company === null || typeof company !== 'object') return company;
+
+    let total = 0;
+    
+    if (Array.isArray(company)) {
+        for (let i = 0; i < company.length; i++) {
+            total += company[i].salary;
+        };
+    } else {
+        for (let key in company) {
+            total += totalSales(company[key]);
+        };
+    };
+
+    return total; 
 }
 
 const total = totalSales(conmpany);
