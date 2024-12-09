@@ -3,8 +3,11 @@
 
 // ** Створіть функцію конструктор на базі якої будуть створені обʼєкти користувачів
 
-function User(name, surname) {
-    // youre awesome code here
+function User(name, surname, age, yourHome) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+    this.yourHome = yourHome;
 }
 
 User.prototype.getInfo = () => {
@@ -14,4 +17,6 @@ User.prototype.getInfo = () => {
     }
 }
 
-const user = new User();
+const user = new User('Nikita', 'Shevtsov', 20, 'Dnipro');
+
+console.log(user);
