@@ -1,5 +1,14 @@
-// # HW 11.3
+const btn = document.getElementById('button');
 
-// ## Кнопка зміни кольору
+btn.addEventListener('click', () => {    
+    btn.previousElementSibling.classList.toggle('paragraf');
 
-// Є блок із текстом на сторінці та кнопку. При натисканні на кнопку текст змінює колір. При повторному натисканні – повертається попередній колір
+    if (btn.previousElementSibling.classList.contains('paragraf')) {
+        btn.previousElementSibling.style.color = 'red';
+    } else {
+        btn.previousElementSibling.style.color = 'black';
+    }
+});
+
+
+
