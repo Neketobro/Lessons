@@ -10,14 +10,14 @@ function sum() {
         for (let j = 1; j <= 10; j++) {
             result = i * j;
             
-            fatherDiv.insertAdjacentElement('beforeend', createList(result));
+            fatherDiv.insertAdjacentElement('beforeend', createDiv(result));
         }
         document.body.insertAdjacentElement('beforeend', fatherDiv);
     }
 }
 sum();
 
-function createListEl(data) {
+function createDivEl(data) {
     const el = document.createElement('div');
     el.innerText = data;
     el.style.textAlign = 'center';
@@ -25,10 +25,10 @@ function createListEl(data) {
     return el;
 }
 
-function createList(data) {
+function createDiv(data) {
     const div = document.createElement('div');
 
-    div.insertAdjacentElement('beforeend', createListEl(data))
+    div.insertAdjacentElement('beforeend', createDivEl(data))
 
     div.style.display = 'flexbox';
     div.style.width = '30px';
