@@ -1,5 +1,13 @@
-// # HW 11.2
+let img = document.createElement('img');
+let num = getRandomInt(10);
 
-// ## Отримання випадкового зображення
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+};
+if (num === 0) num = 10; 
 
-// Покласти в папку будь-які зображення 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg, 7.jpg, 8.jpg, 9.jpg. Вивести зображення, отримане випадковим чином (Math.random)
+document.body.append(img);
+img.src = `./image/${num}.png`;
+img.alt = 'cat';
+img.style.width = '500px';
+img.style.height = '500px';
