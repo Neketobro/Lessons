@@ -1,9 +1,44 @@
-// TODO лист
-// Створіть HTML-сторінку, яка містить список завдань (to-do list) з можливістю додавання нових завдань. Ваше ціль - використовуючи делегування подій, створити обробник подій для списку завдань, який дозволить видаляти завдання при кліку на них.
+const ul = document.querySelector('[data-ul-container]');
+const input = document.getElementById('inputText');
+const btnIpnput = document.querySelector('[data-btn-input]')
 
-// Покроковий план:
+let i = 0;
+btnIpnput.addEventListener('click', (e) => {
+    e.preventDefault()
+    i++;
+    if (!input.value.trim()) return;
 
-// Створіть HTML-елементи: список завдань ul, текстове поле для вводу нових завдань та кнопку для додавання.
-// Додайте обробник подій до списку завдань ul, використовуючи делегування.
-// При кліку на будь-якій кнопці видалення, видаліть цей пункт.
-// Додайте можливість вводити нові завдання у текстове поле і додавати їх до списку за допомогою кнопки.
+    const li = createEl({ type: 'li', content: input.value, attributes: {class: i } })
+    const btnDelete = createEl({ type: 'button', content: 'delete', attributes: {class: `btnClass-${i}` } })
+    btnDelete.style.cssText = 'margin-left: 20px';
+    li.append(btnDelete);
+    ul.append(li);
+
+    btnDelete.addEventListener('click', () => {
+        clearEl(li, true);
+    })
+});
+
+function createEl({ type = 'div', content, attributes  } = {}) {
+    const $el = document.createElement(type);
+
+    if (content) {
+        typeof content === 'string' ? $el.textContent = content : $el.append(content)
+    }
+
+    if (attributes) Object.entries(attributes).forEach(([key, value]) => {
+        $el.setAttribute(key, value)
+    })
+
+    return $el;
+}
+
+function clearEl(elemetn, flag) {
+    if (!elemetn && elemetn.nodeType !== 1) return;
+
+    while (elemetn.firstElementChild) {
+        elemetn.firstElementChild.remove()
+    }
+
+    if (flag) elemetn.remove()
+}
