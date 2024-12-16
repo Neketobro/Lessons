@@ -1,25 +1,27 @@
-const ul = document.querySelector('[data-ul-container]');
-const input = document.getElementById('inputText');
-const btnIpnput = document.querySelector('[data-btn-input]')
+const container = document.querySelector('[data-ul-container]');
 
 let i = 0;
-btnIpnput.addEventListener('click', (e) => {
-    e.preventDefault()
-    i++;
-    if (!input.value.trim()) return;
+document.forms.myForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    const li = createEl({ type: 'li', content: input.value, attributes: {class: i } })
-    const btnDelete = createEl({ type: 'button', content: 'delete', attributes: {class: `btnClass-${i}` } })
+    let inputValue = e.target.firstElementChild.value;
+
+    if (!inputValue.trim()) return;
+    i++;
+    const li = createList({ type: 'li', content: inputValue, attributes: {class: i } })
+    const btnDelete = createList({ type: 'button', content: 'delete', attributes: {class: `btnClass-${i}`}});
+
     btnDelete.style.cssText = 'margin-left: 20px';
+
     li.append(btnDelete);
-    ul.append(li);
+    container.append(li);
 
     btnDelete.addEventListener('click', () => {
-        clearEl(li, true);
+        clearList(li, true); 
     })
-});
+})
 
-function createEl({ type = 'div', content, attributes  } = {}) {
+function createList({ type = 'li', content, attributes}) {
     const $el = document.createElement(type);
 
     if (content) {
@@ -33,7 +35,7 @@ function createEl({ type = 'div', content, attributes  } = {}) {
     return $el;
 }
 
-function clearEl(elemetn, flag) {
+function clearList(elemetn, flag) {
     if (!elemetn && elemetn.nodeType !== 1) return;
 
     while (elemetn.firstElementChild) {
