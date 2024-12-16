@@ -4,7 +4,7 @@ addLink.addEventListener('click', () => {
     
     function goLink() {
         let link = prompt('Enter your Link', '');
-        if (!link) {
+        if (!link.trim()) {
             alert('URL is undefind, please enter try again.')
             return goLink();
         } else {
