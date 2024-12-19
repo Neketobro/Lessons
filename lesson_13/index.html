@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 13</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <form name="form">
+        <h1>We would like to help you</h1>
+        <div class="form-text"></div>
+        <input type="text" name="name" placeholder="Name" tabindex="1">
+        <div class="form-text"></div>
+        <textarea rows="4" name="textArea" tabindex="2" placeholder="Message"></textarea>
+        <p>HOW TO ANSWER YOU?</p>
+        <div class="form-text"></div>
+        <input type="text" name="phoneNumber" placeholder="Enter your number" tabindex="3">
+        <div class="form-text"></div>
+        <input type="text" name="email" tabindex="4" placeholder="Enter your email">
+        <button id="submit-button"  type="submit">Submit</button>
+    </form>
 </body>
 </html>
