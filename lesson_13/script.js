@@ -1,64 +1,71 @@
+let isFormValid = true;
+const result = {};
+
 document.forms.form.addEventListener('focusout', (e) => {
-    if (e.target.name) {
-        validateElement(e.target);
-    }
+    e.preventDefault();
+    checkInputStyle(e.target);
 });
 
 document.forms.form.addEventListener('submit', (e) => {
     e.preventDefault();
-    funSubmit(e.target);
+    inputSubmit(e);
 });
 
-function validateElement(elmnt) {
-    const regExps = {
-        name: /.+/,
-        textArea: /\w{5}/m,
-        phoneNumber: /^\+380\d{9}$/,
-        email: /\w+@\w+\.\w{2,3}/
+function inputSubmit(e) {
+    Array.from(e.target.elements).forEach(el => {
+        if (el.name) {
+            checkInputStyle(el);
+            result[el.name] = el.value.trim();
+        }
+    });
+    if (!isFormValid) {
+        for (let i = 0; i < e.target.elements.length; i++) {
+            if (e.target.elements[i].name) {
+                if (!e.target.elements[i].name) checkInputStyle(e.target.elements[i]);
+            }
+        }
+        return isFormValid = true;
     };
+    console.log(result);
+}
 
-    const messages = {
+function checkInputStyle(el) {
+    const regTextArea = /\w{5}/m;
+    const regNumber = /^\+380\d{9,9}$/ig;
+    const regEmail = /\w+@\w+\.\w{2,3}/g;
+
+    const messgaError = {
         name: 'Name is not valid',
         textArea: 'Message must contain at least one word with 5 characters',
         phoneNumber: 'Entered number is incorrect. Number must be "+380" and have 9 digits.',
         email: 'Email is not valid'
     };
+    
+    const previosElement = el.previousElementSibling;
 
-    const setError = (message) => {
-        elmnt.previousElementSibling.textContent = message;
-        elmnt.previousElementSibling.style.color = 'red';
-        elmnt.style.border = '1px solid red';
+    if (el.name === 'name' && !el.value.trim()) {
+        previosElement.textContent = messgaError.name;            
+        previosElement.style.color = 'red';
+        el.style.border = '1px solid red';
+        isFormValid = false;
+    } else if (el.name === 'textArea' && !regTextArea.test(el.value)) {
+        previosElement.textContent = messgaError.textArea;            
+        previosElement.style.color = 'red';
+        el.style.border = '1px solid red';
+        isFormValid = false;
+    } else if (el.name === 'phoneNumber' && !regNumber.test(el.value)) {
+        previosElement.textContent = messgaError.phoneNumber;            
+        previosElement.style.color = 'red';
+        el.style.border = '1px solid red';
+        isFormValid = false;
+    } else if (el.name === 'email' && !regEmail.test(el.value)) {
+        previosElement.textContent = messgaError.email;            
+        previosElement.style.color = 'red';
+        el.style.border = '1px solid red';
+        isFormValid = false;
+    } else {
+        previosElement.textContent = '';
+        el.style.border = 'none';
     };
-
-    const clearError = () => {
-        elmnt.previousElementSibling.textContent = '';
-        elmnt.style.border = 'none';
-    };
-
-    if (regExps[elmnt.name] && !regExps[elmnt.name].test(elmnt.value.trim())) {
-        setError(messages[elmnt.name]);
-        return false;
-    }
-
-    clearError();
-    return true;
-}
-
-function funSubmit(form) {
-    const elmnts = Array.from(form.elements).filter(elmnt => elmnt.name);
-    let isFormValid = true;
-    const result = {};
-
-    elmnts.forEach(elmnt => {
-        const isValid = validateElement(elmnt);
-        if (!isValid) {
-            isFormValid = false;
-        } else {
-            result[elmnt.name] = elmnt.value.trim();
-        }
-    });
-
-    if (isFormValid) {
-        console.log(result);
-    }
-}
+    if (!isFormValid) return;
+};
