@@ -1,19 +1,29 @@
+const slider = document.querySelector('[data-slider-element]');
+const btnNext = document.querySelector('[data-next-slied]');
+const btnPrev = document.querySelector('[data-previous-slied]');
+
 const container = document.querySelector('[data-container]');
+// если елемент активный, тогда пусть скролниться
 
-console.dir(container);
 
-container.addEventListener('click', (e) => {
-    console.log(e);
+container.addEventListener('click', e => {
+    if (e.target.matches('.previous')) {
+        for (const element of slider.children) {
+            element.style.transform += 'translateX(1000px)';
+    
+            if (element.matches('.active')) activeElement = element;
+        }
+    };
+    if (e.target.matches('.next')) {
+        for (const element of slider.children) {
+            element.style.transform += 'translateX(-1000px)';
+    
+            if (element.matches('.active')) activeElement = element;
+        }
+        console.dir(slider);
+        
+        // slider.scrollLeft += 1000;
+    };
+    
 })
 
-const scrollableElement = document.querySelector('[data-scroll-element]');
-scrollableElement.addEventListener('scroll', (e) => {
-    console.dir(e.target.scrollLeft);
-    // e.target.scrollLeft = 3000;
-    e.target.scrollLeft = 3000;
-
-
-    // console.dir(e.target.children[0].scrollWidth = 2000;);
-    // console.dir(e.target.children[1].scrollWidth);
-    // console.dir(e.target.children[2].scrollWidth);
-});

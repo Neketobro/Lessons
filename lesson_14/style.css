@@ -54,7 +54,7 @@ body {
     transition: .5s all;
 }
 .btnSlide:last-child {
-    border-radius: 0 20px 20px 0 ;
+    border-radius: 0 20px 20px 0;
 }
 .btnSlide:hover {
     background: #ffffff21;
@@ -67,15 +67,24 @@ body {
     width: 1000px;
     height: 600px;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 .slide {
     width: 1000px;
     height: 100%;
+    padding: 10px;
 
     display: flex;
     justify-content: space-around;
     align-items: center;
+    transition: all .5s;
+}
+.active {
+    box-shadow: inset 0px 0px 100px green;
+}
+
+.active:hover {
+    box-shadow: inset 0px 0px 20px green;
 }
 
 .text, .image {
