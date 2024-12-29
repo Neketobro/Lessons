@@ -6,10 +6,7 @@ let tasks = [];
 if (localStorage.getItem('tasks')) tasks = tasks.concat(JSON.parse(localStorage.getItem('tasks')));
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    console.log(tasks.length === true);
-    
+    e.preventDefault();    
 
     if (tasks.length) {
         addElement(tasks[tasks.length - 1]);
