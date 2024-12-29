@@ -25,7 +25,7 @@ container.addEventListener('click', (e) => {
 
         tasks = tasks.filter((el) => el !== taskContent);
         localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
+    };
 });
 
 container.addEventListener('input', (e) => {
