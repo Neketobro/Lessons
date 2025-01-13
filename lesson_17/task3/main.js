@@ -1,8 +1,30 @@
-// Клас "Банківський рахунок"
-// Створіть клас BankAccount, який буде представляти банківський рахунок. Додайте властивість балансу та методи для внесення та зняття грошей.
-
 class BankAccount {
-  // Your awesome code here
+  constructor(money) {
+      this.money = money;
+  }
+  getBalance() {
+      return this.money;
+  }
+  
+  deposit(amount) {
+      if (amount <= 0) {
+          console.log("Сума внеску повинна бути більшою за нуль.");
+          return;
+      }
+      this.money += amount;
+  }
+
+  withdraw(amount) {
+      if (amount <= 0) {
+          console.log("Сума зняття повинна бути більшою за нуль.");
+          return;
+      }
+      if (amount > this.money) {
+          console.log("Недостатньо коштів для зняття.");
+          return;
+      }
+      this.money -= amount;
+  }
 }
 
 const account1 = new BankAccount(1000);
