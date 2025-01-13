@@ -5,6 +5,7 @@ function Student(name, surname, birthDate, assessments = []) {
     this.assessments = assessments;
 
     this.visiting = Array(25).fill(null);
+    
 }
 
 Student.prototype.getAge = function () {
@@ -12,13 +13,17 @@ Student.prototype.getAge = function () {
     return totalYear - this.birthDate;
 }
 
-Student.prototype.getAverage = function () {
-    let result = 0;
-    this.assessments.forEach(element => {
-        result += element;
-    });
-    return result / this.assessments.length;
+Student.prototype.getAverage = function () { // краще виокристати reduce
+    // let result = 0;
+    // this.assessments.forEach(element => {
+    //     result += element;
+    // });
+    // return result / this.assessments.length;
 
+    const initialValue = 0;
+    const sumWithInitial = this.assessments.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue,);
+
+    return sumWithInitial / this.assessments.length;
 }
 
 Student.prototype.present = function () {
@@ -30,7 +35,7 @@ Student.prototype.present = function () {
     }
 }
 
-Student.prototype.absent = function () {
+Student.prototype.absent = function () { // краще робити через індекс без циклів
     for (let i = 0; i < this.visiting.length; i++) {
         if (this.visiting[i] === null) {
             this.visiting[i] = false;
