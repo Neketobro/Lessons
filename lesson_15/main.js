@@ -3,7 +3,6 @@ const container = document.querySelector('[data-container]');
 
 let tasks = [];
 
-// Завантаження задач із localStorage
 if (localStorage.getItem('tasks')) {
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach(task => addElement(task));
@@ -14,7 +13,10 @@ form.addEventListener('submit', (e) => {
     const taskValue = form.elements.value.value.trim();
     if (!taskValue) return;
 
-    const newTask = { content: taskValue, checked: false };
+    const newTask = { 
+        content: taskValue, 
+        checked: false
+    };
     tasks.push(newTask);
     addElement(newTask);
 

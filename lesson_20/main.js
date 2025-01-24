@@ -1,45 +1,48 @@
-console.log($);
-
-
-const form = document.forms.form;
-const container = document.querySelector('[data-container]');
-
 let tasks = [];
 
-// Завантаження задач із localStorage
 if (localStorage.getItem('tasks')) {
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach(task => addElement(task));
 }
 
-form.addEventListener('submit', (e) => {
+$(document.forms.form).on('submit', (e) => {
     e.preventDefault();
-    const taskValue = form.elements.value.value.trim();
+    const taskValue = $("input[name=inputValue]").val().trim();
     if (!taskValue) return;
 
-    const newTask = { content: taskValue, checked: false };
+    const newTask = { 
+        id: Date.now(),
+        content: taskValue, 
+        checked: false 
+    };
     tasks.push(newTask);
     addElement(newTask);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    form.reset();
+    $(document.forms.form).trigger('reset');
 });
 
-container.addEventListener('click', (e) => {
+$('[data-container]').on('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
-        const taskContent = e.target.previousElementSibling.textContent;
-
-        tasks = tasks.filter(task => task.content !== taskContent);
-        e.target.parentElement.remove();
+        const taskId = $(e.target).parent().data('id');
+        tasks = tasks.filter(task => task.id !== taskId);
+        $(e.target).parent().remove();
 
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
+    if (e.target.tagName === 'LI' || e.target.tagName === 'SPAN') {
+        const taskId = $(e.target).parent().data('id');
+        const task = tasks.find(el => el.id === taskId);
+        if (task) {
+            modalWindow(task.content);
+        }
+    }
 });
 
-container.addEventListener('input', (e) => {
+$('[data-container]').on('input', (e) => {
     if (e.target.type === 'checkbox') {
-        const taskContent = e.target.nextElementSibling.textContent;
-        const task = tasks.find(task => task.content === taskContent);
+        const taskId = $(e.target).parent().data('id');
+        const task = tasks.find(task => task.id === taskId);
 
         if (task) {
             task.checked = e.target.checked;
@@ -47,28 +50,51 @@ container.addEventListener('input', (e) => {
         }
 
         e.target.checked
-            ? e.target.parentElement.classList.add('todo-item--checked')
-            : e.target.parentElement.classList.remove('todo-item--checked');
+            ? $(e.target).parent().addClass('todo-item--checked')
+            : $(e.target).parent().removeClass('todo-item--checked');
     }
 });
 
 function addElement(task) {
-    const li = document.createElement('li');
-    li.classList.add('todo-item');
-    if (task.checked) li.classList.add('todo-item--checked');
+    const li = $('<li></li>').addClass('todo-item').attr('data-id', task.id);
+    if (task.checked) li.addClass('todo-item--checked');
 
-    const input = document.createElement('input');
-    input.setAttribute('type', 'checkbox');
-    input.checked = task.checked;
+    const checkbox = $('<input type="checkbox">').prop('checked', task.checked);
+    const text = $('<span></span>').addClass('todo-item__description').text(task.content);
+    const deleteButton = $('<button>Видалити</button>').addClass('todo-item__delete');
 
-    const span = document.createElement('span');
-    span.classList.add('todo-item__description');
-    span.textContent = task.content;
+    li.append(checkbox, text, deleteButton);
+    $('[data-container]').append(li);
+}
 
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('todo-item__delete');
-    removeButton.textContent = 'Видалити';
+function modalWindow(content) {
+    const existingModal = document.getElementById('dynamicModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
 
-    li.append(input, span, removeButton);
-    container.append(li);
+    const modal = `
+        <div class="modal fade" id="dynamicModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Задача</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>${content}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modal);
+
+    const modalElement = $('#dynamicModal');
+    const modalInstance = new bootstrap.Modal(modalElement);
+    modalInstance.show();
 }
