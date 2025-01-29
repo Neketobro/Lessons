@@ -56,45 +56,60 @@ $('[data-container]').on('input', (e) => {
 });
 
 function addElement(task) {
-    const li = $('<li></li>').addClass('todo-item').attr('data-id', task.id);
+    const li = $('<li>').addClass('todo-item').attr('data-id', task.id);
     if (task.checked) li.addClass('todo-item--checked');
 
     const checkbox = $('<input type="checkbox">').prop('checked', task.checked);
-    const text = $('<span></span>').addClass('todo-item__description').text(task.content);
-    const deleteButton = $('<button>Видалити</button>').addClass('todo-item__delete');
+    const text = $('<span>').addClass('todo-item__description').text(task.content);
+    const deleteButton = $('<button>').addClass('todo-item__delete').text('Видалити');
 
     li.append(checkbox, text, deleteButton);
     $('[data-container]').append(li);
 }
 
 function modalWindow(content) {
-    const existingModal = document.getElementById('dynamicModal');
-    if (existingModal) {
+    const existingModal = $('#dynamicModal');
+    if (existingModal.length) {
         existingModal.remove();
     }
 
-    const modal = `
-        <div class="modal fade" id="dynamicModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Задача</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>${content}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+    const divModal = $('<div>')
+        .addClass('modal fade')
+        .attr('id', 'dynamicModal')
+        .attr('tabindex', '-1')
+        .attr('aria-hidden', 'true');
 
-    document.body.insertAdjacentHTML('beforeend', modal);
+    const divDialog = $('<div>').addClass('modal-dialog');
 
+    const divContent = $('<div>').addClass('modal-content');
+
+    const divHeader = $('<div>').addClass('modal-header');
+    const title = $('<h5>').addClass('modal-title').text('Задача');
+    const closeButton = $('<button>')
+        .addClass('btn-close')
+        .attr('type', 'button')
+        .attr('data-bs-dismiss', 'modal')
+        .attr('aria-label', 'Close');
+
+    const divBody = $('<div>').addClass('modal-body');
+    const bodyText = $('<p>').text(content);
+
+    const divFooter = $('<div>').addClass('modal-footer');
+    const closeFooterButton = $('<button>')
+        .addClass('btn btn-secondary')
+        .attr('type', 'button')
+        .attr('data-bs-dismiss', 'modal')
+        .text('Закрити');
+
+    divHeader.append(title, closeButton);
+    divBody.append(bodyText);
+    divFooter.append(closeFooterButton);
+    divContent.append(divHeader, divBody, divFooter);
+    divDialog.append(divContent);
+    divModal.append(divDialog);
+
+    $('body').append(divModal);
     const modalElement = $('#dynamicModal');
-    const modalInstance = new bootstrap.Modal(modalElement);
+    const modalInstance = new bootstrap.Modal(modalElement[0]);
     modalInstance.show();
 }
