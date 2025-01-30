@@ -28,6 +28,38 @@ export default (env, { mode = 'development' }) => {
                         plugins: ["@babel/plugin-transform-runtime"],
                     },
                 },
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
+                test: /\.s[ac]ss$/i,
+                exclude: /node_modules/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                style: `compressed`,
+                                sourceMap: true,
+                                quietDeps: true,
+                            },
+                        },
+                    }
+                ]
             }],
         },
         optimization: {
