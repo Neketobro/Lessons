@@ -1,6 +1,7 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import TerserPlugin from "terser-webpack-plugin";
+import { watch } from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,6 +29,8 @@ export default (env, { mode = 'development' }) => {
                         plugins: ["@babel/plugin-transform-runtime"],
                     },
                 },
+            },
+            {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: [
@@ -39,6 +42,8 @@ export default (env, { mode = 'development' }) => {
                         },
                     },
                 ],
+            },
+            {
                 test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
                 use: [
@@ -78,6 +83,11 @@ export default (env, { mode = 'development' }) => {
                 extractComments: false,
               }),
             ]
+        },
+        watchOptions: {
+            aggregateTimeout: 600,
+            poll: 1000,
+            ignored: /node_modules/,
         },
     };
 };

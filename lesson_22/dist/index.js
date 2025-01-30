@@ -1,25 +1,5 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("__webpack_require__.e(/*! import() */ \"src_scss_main_scss\").then(__webpack_require__.bind(__webpack_require__, /*! ./scss/main.scss */ \"./src/scss/main.scss\"));\r\n\r\nlet tasks = [];\r\n\r\nif (localStorage.getItem('tasks')) {\r\n    tasks = JSON.parse(localStorage.getItem('tasks'));\r\n    tasks.forEach(task => addElement(task));\r\n}\r\n\r\n$(document.forms.form).on('submit', (e) => {\r\n    e.preventDefault();\r\n    const taskValue = $(\"input[name=inputValue]\").val().trim();\r\n    if (!taskValue) return;\r\n\r\n    const newTask = { \r\n        id: Date.now(),\r\n        content: taskValue, \r\n        checked: false \r\n    };\r\n    tasks.push(newTask);\r\n    addElement(newTask);\r\n\r\n    localStorage.setItem(\"tasks\", JSON.stringify(tasks));\r\n    $(document.forms.form).trigger('reset');\r\n});\r\n\r\n$('[data-container]').on('click', (e) => {\r\n    if (e.target.tagName === 'BUTTON') {\r\n        const taskId = $(e.target).parent().data('id');\r\n        tasks = tasks.filter(task => task.id !== taskId);\r\n        $(e.target).parent().remove();\r\n\r\n        localStorage.setItem(\"tasks\", JSON.stringify(tasks));\r\n    }\r\n    if (e.target.tagName === 'LI' || e.target.tagName === 'SPAN') {\r\n        const taskId = $(e.target).parent().data('id');\r\n        const task = tasks.find(el => el.id === taskId);\r\n        if (task) {\r\n            modalWindow(task.content);\r\n        }\r\n    }\r\n});\r\n\r\n$('[data-container]').on('input', (e) => {\r\n    if (e.target.type === 'checkbox') {\r\n        const taskId = $(e.target).parent().data('id');\r\n        const task = tasks.find(task => task.id === taskId);\r\n\r\n        if (task) {\r\n            task.checked = e.target.checked;\r\n            localStorage.setItem(\"tasks\", JSON.stringify(tasks));\r\n        }\r\n\r\n        e.target.checked\r\n            ? $(e.target).parent().addClass('todo-item--checked')\r\n            : $(e.target).parent().removeClass('todo-item--checked');\r\n    }\r\n});\r\n\r\nfunction addElement(task) {\r\n    const li = $('<li>').addClass('todo-item').attr('data-id', task.id);\r\n    if (task.checked) li.addClass('todo-item--checked');\r\n\r\n    const checkbox = $('<input type=\"checkbox\">').prop('checked', task.checked);\r\n    const text = $('<span>').addClass('todo-item__description').text(task.content);\r\n    const deleteButton = $('<button>').addClass('todo-item__delete').text('Видалити');\r\n\r\n    li.append(checkbox, text, deleteButton);\r\n    $('[data-container]').append(li);\r\n}\r\n\r\nfunction modalWindow(content) {\r\n    const existingModal = $('#dynamicModal');\r\n    if (existingModal.length) {\r\n        existingModal.remove();\r\n    }\r\n\r\n    const divModal = $('<div>')\r\n        .addClass('modal fade')\r\n        .attr('id', 'dynamicModal')\r\n        .attr('tabindex', '-1')\r\n        .attr('aria-hidden', 'true');\r\n\r\n    const divDialog = $('<div>').addClass('modal-dialog');\r\n\r\n    const divContent = $('<div>').addClass('modal-content');\r\n\r\n    const divHeader = $('<div>').addClass('modal-header');\r\n    const title = $('<h5>').addClass('modal-title').text('Задача');\r\n    const closeButton = $('<button>')\r\n        .addClass('btn-close')\r\n        .attr('type', 'button')\r\n        .attr('data-bs-dismiss', 'modal')\r\n        .attr('aria-label', 'Close');\r\n\r\n    const divBody = $('<div>').addClass('modal-body');\r\n    const bodyText = $('<p>').text(content);\r\n\r\n    const divFooter = $('<div>').addClass('modal-footer');\r\n    const closeFooterButton = $('<button>')\r\n        .addClass('btn btn-secondary')\r\n        .attr('type', 'button')\r\n        .attr('data-bs-dismiss', 'modal')\r\n        .text('Закрити');\r\n\r\n    divHeader.append(title, closeButton);\r\n    divBody.append(bodyText);\r\n    divFooter.append(closeFooterButton);\r\n    divContent.append(divHeader, divBody, divFooter);\r\n    divDialog.append(divContent);\r\n    divModal.append(divDialog);\r\n\r\n    $('body').append(divModal);\r\n    const modalElement = $('#dynamicModal');\r\n    const modalInstance = new bootstrap.Modal(modalElement[0]);\r\n    modalInstance.show();\r\n}\n\n//# sourceURL=webpack://lesson_22/./src/index.js?");
-
-/***/ })
-
-/******/ 	});
+/******/ 	var __webpack_modules__ = ({});
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -288,11 +268,99 @@ eval("__webpack_require__.e(/*! import() */ \"src_scss_main_scss\").then(__webpa
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.e(/*! import() */ "src_scss_main_scss").then(__webpack_require__.bind(__webpack_require__, /*! ./scss/main.scss */ "./src/scss/main.scss"));
+var tasks = [];
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks.forEach(function (task) {
+    return addElement(task);
+  });
+}
+$(document.forms.form).on('submit', function (e) {
+  e.preventDefault();
+  var taskValue = $("input[name=inputValue]").val().trim();
+  if (!taskValue) return;
+  var newTask = {
+    id: Date.now(),
+    content: taskValue,
+    checked: false
+  };
+  tasks.push(newTask);
+  addElement(newTask);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  $(document.forms.form).trigger('reset');
+});
+$('[data-container]').on('click', function (e) {
+  if (e.target.tagName === 'BUTTON') {
+    var taskId = $(e.target).parent().data('id');
+    tasks = tasks.filter(function (task) {
+      return task.id !== taskId;
+    });
+    $(e.target).parent().remove();
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+  if (e.target.tagName === 'LI' || e.target.tagName === 'SPAN') {
+    var _taskId = $(e.target).parent().data('id');
+    var task = tasks.find(function (el) {
+      return el.id === _taskId;
+    });
+    if (task) {
+      modalWindow(task.content);
+    }
+  }
+});
+$('[data-container]').on('input', function (e) {
+  if (e.target.type === 'checkbox') {
+    var taskId = $(e.target).parent().data('id');
+    var task = tasks.find(function (task) {
+      return task.id === taskId;
+    });
+    if (task) {
+      task.checked = e.target.checked;
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+    e.target.checked ? $(e.target).parent().addClass('todo-item--checked') : $(e.target).parent().removeClass('todo-item--checked');
+  }
+});
+function addElement(task) {
+  var li = $('<li>').addClass('todo-item').attr('data-id', task.id);
+  if (task.checked) li.addClass('todo-item--checked');
+  var checkbox = $('<input type="checkbox">').prop('checked', task.checked);
+  var text = $('<span>').addClass('todo-item__description').text(task.content);
+  var deleteButton = $('<button>').addClass('todo-item__delete').text('Видалити');
+  li.append(checkbox, text, deleteButton);
+  $('[data-container]').append(li);
+}
+function modalWindow(content) {
+  var existingModal = $('#dynamicModal');
+  if (existingModal.length) {
+    existingModal.remove();
+  }
+  var divModal = $('<div>').addClass('modal fade').attr('id', 'dynamicModal').attr('tabindex', '-1').attr('aria-hidden', 'true');
+  var divDialog = $('<div>').addClass('modal-dialog');
+  var divContent = $('<div>').addClass('modal-content');
+  var divHeader = $('<div>').addClass('modal-header');
+  var title = $('<h5>').addClass('modal-title').text('Задача');
+  var closeButton = $('<button>').addClass('btn-close').attr('type', 'button').attr('data-bs-dismiss', 'modal').attr('aria-label', 'Close');
+  var divBody = $('<div>').addClass('modal-body');
+  var bodyText = $('<p>').text(content);
+  var divFooter = $('<div>').addClass('modal-footer');
+  var closeFooterButton = $('<button>').addClass('btn btn-secondary').attr('type', 'button').attr('data-bs-dismiss', 'modal').text('Закрити');
+  divHeader.append(title, closeButton);
+  divBody.append(bodyText);
+  divFooter.append(closeFooterButton);
+  divContent.append(divHeader, divBody, divFooter);
+  divDialog.append(divContent);
+  divModal.append(divDialog);
+  $('body').append(divModal);
+  var modalElement = $('#dynamicModal');
+  var modalInstance = new bootstrap.Modal(modalElement[0]);
+  modalInstance.show();
+}
 /******/ })()
 ;
+//# sourceMappingURL=index.js.map
