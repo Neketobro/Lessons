@@ -16,6 +16,8 @@
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.7",
     "babel-loader": "^9.2.1",
+    "terser-webpack-plugin": "^5.3.11",
+    "uglify-js": "^3.19.3",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   }

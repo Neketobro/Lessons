@@ -1,5 +1,6 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import TerserPlugin from "terser-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -29,5 +30,30 @@ export default (env, { mode = 'development' }) => {
                 },
             }],
         },
+        optimization: {
+            chunkIds: "named",
+            splitChunks: {
+                chunks: "all",
+            },
+            minimize: isProd,
+            minimizer: [new TerserPlugin({
+                parallel: true,
+                terserOptions: {
+                  format: {
+                    comments: false,
+                  },
+                },
+                extractComments: false,
+              }),
+            ]
+        },
     };
 };
+
+// На основі одного з попередніх завдань зробити білд через Webpack. Що має робити білд:
+// Оптимізація, конкатинація, мініфікація JS+
+// Компіляція SCSS в CSS. Мініфікація CSS
+// Вотчер
+// За бажанням:
+// Dev-server
+// image-minimizer-webpack-plugin
