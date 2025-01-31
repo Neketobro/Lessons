@@ -1,7 +1,9 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import TerserPlugin from "terser-webpack-plugin";
-import { watch } from "fs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -63,39 +65,57 @@ export default (env, { mode = 'development' }) => {
                                 quietDeps: true,
                             },
                         },
-                    }
+                    },
                 ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                type: "asset",
             }],
         },
         optimization: {
-            chunkIds: "named",
-            splitChunks: {
-                chunks: "all",
-            },
             minimize: isProd,
             minimizer: [new TerserPlugin({
                 parallel: true,
                 terserOptions: {
-                  format: {
-                    comments: false,
-                  },
+                    format: {
+                        comments: false,
+                    },
                 },
                 extractComments: false,
-              }),
-            ]
+            }), new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.imageminMinify,
+                    options: {
+                        plugins: [
+                            ["gifsicle", { interlaced: true }],
+                            ["jpegtran", { progressive: true }],
+                            ["optipng", { optimizationLevel: 5 }],
+                        ]
+                    }
+                }
+            })
+            ],
         },
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: "./src/index.html", // Шлях до HTML-файлу
+                filename: "index.html", // Файл, який буде збережено в dist
+            }),
+        ],
         watchOptions: {
             aggregateTimeout: 600,
             poll: 1000,
             ignored: /node_modules/,
         },
+        devServer: {
+            static: {
+                directory: path.join(__dirname, './dist'),
+            },
+            compress: true,
+            port: 9000,
+            hot: true, // Автоматичне оновлення
+            open: true
+        }
     };
 };
-
-// На основі одного з попередніх завдань зробити білд через Webpack. Що має робити білд:
-// Оптимізація, конкатинація, мініфікація JS+
-// Компіляція SCSS в CSS. Мініфікація CSS
-// Вотчер
-// За бажанням:
-// Dev-server
-// image-minimizer-webpack-plugin
