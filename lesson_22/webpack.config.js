@@ -99,8 +99,8 @@ export default (env, { mode = 'development' }) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: "./src/index.html", // Шлях до HTML-файлу
-                filename: "index.html", // Файл, який буде збережено в dist
+                template: "./src/index.html",
+                filename: "index.html",
             }),
         ],
         watchOptions: {
@@ -114,7 +114,7 @@ export default (env, { mode = 'development' }) => {
             },
             compress: true,
             port: 9000,
-            hot: true, // Автоматичне оновлення
+            hot: true,
             open: true
         }
     };
