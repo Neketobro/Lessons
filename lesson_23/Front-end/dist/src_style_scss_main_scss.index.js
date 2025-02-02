@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunklesson_22"] = self["webpackChunklesson_22"] || []).push([["src_style_scss_main_scss"],{
+(self["webpackChunklesson_23"] = self["webpackChunklesson_23"] || []).push([["src_style_scss_main_scss"],{
 
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/style/scss/main.scss":
 /*!***********************************************************************************************************************************************************************!*\

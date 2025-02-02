@@ -2,6 +2,7 @@ import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import TerserPlugin from "terser-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 import path from "path";
 import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
 
@@ -99,12 +100,21 @@ export default (env, { mode = 'development' }) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "lesson_23",
-                scriptLoading: "defer",
+                title: "lesson_23 dist",
+                // scriptLoading: "defer",
                 minify: true,
-                filename: "index.html", // Файл, який буде збережено в dist
+                filename: "index.html",
+                favicon: "./dist/Favicon_48x48.png",
                 template: resolve(__dirname, "src", "index.html"),
             }),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: resolve(__dirname, "src", "public"),
+                        to: resolve(__dirname, "dist"),
+                    },
+                ],
+            })
         ],
         watchOptions: {
             aggregateTimeout: 600,
@@ -117,7 +127,7 @@ export default (env, { mode = 'development' }) => {
             },
             compress: true,
             port: 9000,
-            hot: true, // Автоматичне оновлення
+            hot: true,
             open: true
         }
     };
