@@ -1,5 +1,16 @@
 {
+  "name": "lesson_23",
+  "version": "1.0.0",
+  "description": "API fot TODO list",
+  "license": "ISC",
+  "author": "NShevtsov",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "jquery": "^3.7.1"
-  }
+  },
+  "devDependencies": {}
 }
