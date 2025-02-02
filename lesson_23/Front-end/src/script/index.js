@@ -1,3 +1,5 @@
+import("../style/scss/main.scss");
+
 let tasks = [];
 
 if (localStorage.getItem('tasks')) {
