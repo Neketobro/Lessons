@@ -1,0 +1,19 @@
+.navigation-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    padding-inline: 0;
+}
+.navigation-box span {
+    padding: 7px;
+}
+.navigation-box span:first-child {
+    background: #dedfe0;
+    border-right: 1px solid #e9ecef;
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+button {
+    background: #dedfe0;
+    border: 1px solid #e9ecef;
+}
