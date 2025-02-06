@@ -1,4 +1,4 @@
-import("../style/scss/main.scss");
+// import '../style/scss/main.scss';
 
 let tasks = [];
 
@@ -115,3 +115,17 @@ function modalWindow(content) {
     const modalInstance = new bootstrap.Modal(modalElement[0]);
     modalInstance.show();
 }
+
+async function getUsers() {
+    try {
+        const response = await fetch('http://localhost:3000/todos');
+        const users = await response.json();
+
+        console.log(users);
+        
+    } catch (error) {
+        console.error('Ошибка загрузки данных:', error);
+    }
+}
+
+getUsers();

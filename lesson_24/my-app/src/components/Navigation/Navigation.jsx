@@ -4,11 +4,13 @@ import "./Navigation.css";
 export class Nav extends Component {
     render() {
         return (
-            <div className="container-navigation alert alert-light">
-                <span className="wrapper-navigation">
-                    <span>https://swapi.dev/api/</span>
+            <div className="navigation-container alert alert-light">
+                <div className="navigation-box">
+                    <span>
+                        <b>https://swapi.dev/api/</b>
+                    </span>
                     <span>people/1/</span>
-                </span>
+                </div>
                 <span>
                     <button>Get info</button>
                 </span>
@@ -16,3 +18,10 @@ export class Nav extends Component {
         )
     }
 }
+
+// Text
+// https://swapi.dev/api/
+// people/1/
+
+// button
+// Get info
