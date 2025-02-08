@@ -1,81 +1,53 @@
-$primary-color: #66deb2;
-$secondary-color: #0be69d;
-$background-color: #fff;
-$border-color: #000;
-
-@mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@mixin button-style {
-    background: $secondary-color;
-    border: none;
-    cursor: pointer;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    line-height: 1.2;
-    font-size: 18px;
-    background-color: $primary-color;
-}
-
-h1, h2 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
 .container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 75%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.form {
-    background: $background-color;
-    padding: 10px;
-    margin: 25px 0;
-    @include flex-center;
-
-    &__input {
-        min-height: 25px;
-        padding: 10px;
-        width: 100%;
-        border: 1px solid $border-color;
-    }
-
-    &__btn {
-        @include button-style;
-        width: 100px;
-    }
+form {
+    @extend .container;
+    justify-content: center;
 }
-.todo-item {
-    @include flex-center;
-    justify-content: space-between;
+
+input {
+    margin: 10px;
     padding: 10px;
-    background: $background-color;
     border-radius: 10px;
-    margin-bottom: 10px;
+    border: 1px solid black;
+    outline: none;
+}
 
-    &--checked {
-        text-decoration: line-through;
+.todo-container {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .todo-box {
+        width: 80%;
     }
 
-    &__description {
-        flex-grow: 1;
-        padding-left: 10px;
+    .todo-title {
+        color: black;
+        text-align: center;
     }
 
-    &__delete {
-        @include button-style;
-        width: 95px;
-        padding: 10px;
+    .todo-box-buttons {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .todo-button {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
     }
+}
+
+.bi {
+    font-size: 20px;
 }
