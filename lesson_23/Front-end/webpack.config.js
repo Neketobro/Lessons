@@ -5,12 +5,22 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import path from "path";
 import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
+import webpackPkg from "webpack";
+import dotenv from "dotenv";
+
+const { DefinePlugin } = webpackPkg;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default (env, { mode = 'development' }) => {
     const isProd = mode === 'production';
+
+    const envVars = dotenv.config().parsed || {};
+    const envKeys = Object.keys(envVars).reduce((acc, key) => {
+        acc[`process.env.${key}`] = JSON.stringify(envVars[key]);
+        return acc;
+    }, {});
 
     return {
         mode,
@@ -104,7 +114,6 @@ export default (env, { mode = 'development' }) => {
                 // scriptLoading: "defer",
                 minify: true,
                 filename: "index.html",
-                favicon: "./dist/Favicon_48x48.png",
                 template: resolve(__dirname, "src", "index.html"),
             }),
             new CopyPlugin({
@@ -114,7 +123,8 @@ export default (env, { mode = 'development' }) => {
                         to: resolve(__dirname, "dist"),
                     },
                 ],
-            })
+            }),
+            new DefinePlugin(envKeys),
         ],
         watchOptions: {
             aggregateTimeout: 600,
