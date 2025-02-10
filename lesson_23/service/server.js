@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { Logger } from "./libs/logger.js";
 import { app } from "./src/index.js";
+import 'dotenv/config'
 
-const port = 3000;
+const port = process.env.PORT;
 
-mongoose.connect("mongodb+srv://user:Osi0AraDRpZj4HxL@usernikita.r7ea6.mongodb.net/?retryWrites=true&w=majority&appName=UserNikita");
+mongoose.connect(process.env.MONGO_DB_STRING);
 
 const db = mongoose.connection;
 
