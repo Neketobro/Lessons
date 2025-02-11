@@ -1,0 +1,30 @@
+h1, h2, h3 {
+    text-align: center;
+}
+.wrapper-emoji {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.emojy {
+    font-size: 60px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    transition: all .5s;
+}
+.emojy:hover {
+    scale: 1.1;
+}
+.display-flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.display-flex-center div{ 
+    font-size: 60px;
+}
+.btn-show-results {
+    margin-bottom: 10px;
+}
