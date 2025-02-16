@@ -40,7 +40,7 @@ export class EmoticonCounter extends React.Component {
 
     clearResults = () => {
         localStorage.removeItem("votes");
-        this.setState({ 
+        this.setState({
             votes: { joy: 0, happiness: 0, cool: 0, starsEyes: 0, lovingEyes: 0 },
             showResults: false,
         });
