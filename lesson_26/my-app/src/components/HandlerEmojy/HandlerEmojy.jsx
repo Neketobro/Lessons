@@ -59,7 +59,7 @@ export function HandlerEmojy() {
           <p className='count'>{lovingEyes}</p>
         </div>
       </div>
-      <button onClick={toggleModalHandler}>Show result</button>
+      <button className='buttons' onClick={toggleModalHandler}>Show result</button>
       {isBoolean && (
         <div>
           <p className='emojy'>
@@ -70,7 +70,7 @@ export function HandlerEmojy() {
             {topEmoticon === 'lovingEyes' && '😍'}
           </p>
           <p>Переможець</p>
-          <button onClick={resetResults}>Reset Result</button>
+          <button className='buttons' onClick={resetResults}>Reset Result</button>
         </div>
       )}
     </div>

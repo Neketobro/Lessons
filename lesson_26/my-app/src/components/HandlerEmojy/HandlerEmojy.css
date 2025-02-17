@@ -1,21 +1,23 @@
 .container-emojy {
-    background-color: lightblue;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .box-emojy {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
 .button-emojy {
     font-size: 45px;
     cursor: pointer;
@@ -23,10 +25,22 @@
     border: none;
     transition: all .2s;
 }
+
 .buttion-emojy:hover {
     scale: 1.1;
+}
+p {
+    text-align: center;
 }
 .emojy {
     text-align: center;
     font-size: 45px;
+}
+
+.buttons {
+    background: green;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
