@@ -5,7 +5,7 @@ import style from './Header.module.scss';
 import { Link } from "react-router-dom";
 
 export function Header() {
-    const { logo, header } = style;
+    const { logo, header, navigation  } = style;
     return (
         <div className={header}>
             <div className={logo}>
@@ -14,7 +14,7 @@ export function Header() {
                     <h3>Homework</h3>
                 </Link>
             </div>
-            <Navigation />
+            <Navigation navAttrs={{ className: navigation }}/>
             <ButtonTheme />
         </div>
     )
