@@ -10,10 +10,13 @@
         width: 70px;
         height: 60px;
     }
-
     a {
         text-decoration: none;
         display: flex;
         color: inherit;
     }
+}
+
+.navigation {
+    flex: 1;
 }
