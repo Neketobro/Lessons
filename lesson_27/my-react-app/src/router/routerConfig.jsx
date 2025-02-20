@@ -1,22 +1,40 @@
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage, MainPage } from "../pages";
+import { ErrorPage, MainPage, AboutMePage } from "../pages";
 
 const routerConfig = [
   {
     path: "/",
     errorElement: <ErrorPage />,
     id: "root",
-    loader: async ({ request }) => {
-      const resp = await fetch(
-          `https://reqres.in/api/users`,
-          { signal: request.signal }
-      );
-      const { data } = await resp.json();
-      return data
-    },
     children: [
       { index: true, element: <MainPage /> },
-      { path: 'example', element: <h1>This is example page. Path = /example</h1> },
+      {
+        path: "contact",
+        children: [
+          {
+            index: true,
+            loader: async ({ request }) => {
+              const resp = await fetch(
+                `https://reqres.in/api/users`,
+                { signal: request.signal }
+              );
+              const { data } = await resp.json();
+              return data
+            },
+            async lazy() {
+              const { ContactsPage } = await import('../pages/Contacts/index')
+
+              return { Component: ContactsPage }
+            }
+          }
+        ],
+      },
+      {
+        path: "aboutme",
+        children: [
+          { index: true, element: <AboutMePage /> }
+        ],
+      },
     ],
   },
 ];

@@ -1,3 +1,4 @@
 export * from './Main';
 export * from './ErrorPage';
-// export * from './User';
+export * from './Contacts';
+export * from './AboutMe';
