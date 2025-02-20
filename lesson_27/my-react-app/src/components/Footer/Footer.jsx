@@ -2,11 +2,13 @@ import style from './Footer.module.scss';
 
 export function Footer() {
 
-    const {footer} = style;
+    const { footer } = style;
 
     return (
         <div className={footer}>
-            <p>Footer</p>
+            <p>
+                <i>Developed as part of developing web development skills.</i>
+            </p>
         </div>
     )
 }
