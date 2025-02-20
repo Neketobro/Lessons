@@ -19,12 +19,22 @@ export function Navigation({ navAttrs }) {
                 </li>
                 <li>
                     <NavLink
-                        to="/user/1"
+                        to="/contact"
                         className={({ isActive, isPending }) =>
                             isActive ? active : isPending ? pending : ""
                         }
                     >
                         Contact
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/AboutMe"
+                        className={({ isActive, isPending }) =>
+                            isActive ? active : isPending ? pending : ""
+                        }
+                    >
+                        About me
                     </NavLink>
                 </li>
             </ul>
