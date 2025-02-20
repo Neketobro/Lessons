@@ -1,5 +1,9 @@
 @use "./_config" as config;
 
+* {
+  transition: all .2s;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -9,6 +13,11 @@ body {
 .dark {
   background-color: config.$c-dark;
   color: config.$c-light;
+}
+
+.dark .todo {
+  background: config.$c-dark;
+  border: 1px solid config.$c-light;
 }
 
 .dark button {
@@ -26,6 +35,11 @@ body {
   color: config.$c-dark;
 }
 
+.light .todo {
+  background: config.$c-light;
+  border: 1px solid config.$c-dark;
+}
+
 .light button {
   background-color: config.$c-dark;
   color: config.$c-light;
@@ -34,4 +48,8 @@ body {
 .light button:hover {
   background-color: config.$c-primary;
   color: config.$c-light;
+}
+
+.light div {
+  border-color: config.$c-black;
 }
