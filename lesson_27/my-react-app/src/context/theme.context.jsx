@@ -8,4 +8,4 @@ export const themeContext = createContext({
     setTheme: () => {}
 })
 
-export const ThemeContextProvider =themeContext.Provider;
+export const ThemeContextProvider = themeContext.Provider;

@@ -1,8 +1,11 @@
+@use '../../service/style/config' as config;
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
+    border-bottom: 1px solid config.$c-light;
 }
 
 .logo {

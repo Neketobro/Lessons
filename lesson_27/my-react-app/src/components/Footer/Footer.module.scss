@@ -1,0 +1,5 @@
+@use '../../service/style/config' as config;
+
+.footer {
+    border-top: 1px solid config.$c-light;
+}
