@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Footer, Header, PageLayout } from '../../components';
 import './Main.scss';
-import { useRef } from 'react';
 
 export function MainPage() {
     const [todos, setTodos] = useState([]);
