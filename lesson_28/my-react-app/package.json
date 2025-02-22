@@ -8,9 +8,11 @@
     "build": "vite build"
   },
   "dependencies": {
+    "formik": "^2.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass-embedded": "^1.85.0"
+    "sass-embedded": "^1.85.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.8",
