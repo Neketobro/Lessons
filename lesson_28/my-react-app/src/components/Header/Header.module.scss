@@ -1,8 +1,11 @@
 .header {
     height: 10vh;
     background: #3452;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .title {
-        color: #fff;
+        color: #000;
     }
 }

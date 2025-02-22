@@ -29,7 +29,7 @@ export function Navigation({ navAttrs }) {
                 </li>
                 <li>
                     <NavLink
-                        to="/AboutMe"
+                        to="/about-me"
                         className={({ isActive, isPending }) =>
                             isActive ? active : isPending ? pending : ""
                         }
