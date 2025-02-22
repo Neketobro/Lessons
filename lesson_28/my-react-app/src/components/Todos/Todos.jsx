@@ -3,21 +3,23 @@ import { todosScheme } from '../../services'
 
 export function Todos() {
     return (
-        <div>
+        <div className='container alert alert-secondary'>
             <Formik
                 initialValues={{ todoText: '' }}
                 onSubmit={(values, formikHelper) => {
                     setTimeout(() => {
                         console.log(values);
                         formikHelper.resetForm();
-                        formikHelper.setSubmitting(false)
+                        formikHelper.setSubmitting(false);
                     }, 1000)
                 }}
                 validationSchema={todosScheme}>
                 <Form>
-                    <Field type="text" name="todoText" placeholder="Enter your text..." />
-                    <ErrorMessage name='todoText' />
-                    <button type='submit'>Send</button>
+                    <p>
+                        <ErrorMessage name='todoText' />
+                    </p>
+                    <Field className='form-control' type="text" name="todoText" placeholder="Enter your text..." />
+                    <button className='btn btn-primary' type='submit'>Send</button>
                 </Form>
             </Formik>
         </div>
