@@ -1,24 +1,25 @@
-import { useState, createElement } from 'react';
+import { useState } from 'react';
 import { Footer, Header, PageLayout } from '../../components';
 import './Main.scss';
+import { useRef } from 'react';
 
 export function MainPage() {
     const [todos, setTodos] = useState([]);
+    const inputRef = useRef(null);
 
     function CreateTodo({ name, index, onDelete }) {
-        return createElement(
-            'li',
-            { className: 'todo' },
-            createElement('i', null, name),
-            createElement('button', { onClick: () => onDelete(index) }, 'delete')
-        );
+        return (
+            <div className='todo'>
+                <i>{name}</i>
+                <button onClick={() => onDelete(index)}>delete</button>
+            </div>
+        )
     }
 
     function addTodo() {
-        const input = document.querySelector('input[name="todo_input"]');
-        if (input.value.trim() === '') return;
-        setTodos([...todos, input.value]);
-        input.value = '';
+        if (!inputRef.current || inputRef.current.value.trim() === '') return;
+        setTodos([...todos, inputRef.current.value]);
+        inputRef.current.value = '';
     }
 
     function deleteTodo(index) {
@@ -31,7 +32,7 @@ export function MainPage() {
             renderMain={() => (
                 <div>
                     <p>Home Page</p>
-                    <input type="text" name="todo_input" />
+                    <input type="text" name="todo_input" ref={inputRef} />
                     <button onClick={addTodo}>Create Todo</button>
                     <ul>
                         {todos.map((todo, index) => (

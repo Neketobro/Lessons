@@ -30,7 +30,7 @@ const routerConfig = [
         ],
       },
       {
-        path: "aboutme",
+        path: "about-me",
         children: [
           { index: true, element: <AboutMePage /> }
         ],
