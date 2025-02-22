@@ -1,0 +1,22 @@
+.container-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    button {
+        width: 200px;
+    }
+
+}
+.error-message {
+    font-size: 14px;
+    color: red;
+    margin: 0;  
+}
+.container-todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
