@@ -33,7 +33,6 @@ export function Todos() {
                     onSubmit={(values, formikHelper) => {
                         setTimeout(() => {
                             submitHandler(values);
-                            console.log(values);
                             formikHelper.resetForm();
                             formikHelper.setSubmitting(false);
                         }, 1000)
