@@ -1,18 +1,12 @@
-// import { useState } from 'react';
+import { store } from './store';
+import { Provider } from 'react-redux'
 import App from './App.jsx';
 
 export function AppWrapper() {
-    // const [theme, setTheme] = useState(THEME_DARK);
 
     return (
-        // <ThemeContextProvider value={{ theme, setTheme }}>
-        //     <App />
-        //     <div>
-        //         <h1>Hello World</h1>
-        //     </div>
-        // </ThemeContextProvider>
-        <>
+        <Provider store={store}>
             <App />
-        </>
+        </Provider>
     )
 }
