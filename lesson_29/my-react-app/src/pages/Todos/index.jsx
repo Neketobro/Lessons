@@ -2,13 +2,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Footer, Header, PageLayout } from '../../components';
 import { todosScheme } from '../../services'
 import { v4 as uuidv4 } from 'uuid';
-import { addTodo, deleteTodo, resetAllTodo, selectTodo } from '../../ducks/todo.duck.js';
+import { addTodo, selectTodo } from '../../ducks/todo.duck.js';
 import { useDispatch, useSelector } from 'react-redux';
 
 export function TodosPage() {
     const dispatch = useDispatch();
     const todos = useSelector(selectTodo);
-
+    
     function submitHandler(value) {
         if (!value.nameTodo.trim()) return;
 
@@ -48,13 +48,9 @@ export function TodosPage() {
                                 {todos.map(({ name, id }) => (
                                     <li key={id}>
                                         Todo: {name}
-                                        <button onClick={() => dispatch(deleteTodo(id))}>
-                                            Remove
-                                        </button>
                                     </li>
                                 ))}
                             </ul>
-                            <button onClick={() => dispatch(resetAllTodo())}>Clear users</button>
                         </>
                     )}
                 </div>

@@ -10,12 +10,6 @@ const tosoSlice = createSlice({
         addTodo: (state, {payload}) => {
             state.nameTodo.push(payload);
         },
-        deleteTodo: (state, {payload}) => {
-            state.nameTodo = [...state.nameTodo].filter(({id}) => id !== payload)
-        },
-        resetAllTodo: (state) => {
-            state.nameTodo = initialState.nameTodo
-        },
     },
     selectors: {
         selectTodo: (state) => state.nameTodo
