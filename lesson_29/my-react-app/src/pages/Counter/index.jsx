@@ -1,8 +1,6 @@
 import { Footer, Header, PageLayout } from '../../components';
 import { useDispatch, useSelector } from "react-redux";
-import { incremented, decremented, reset } from "../../ducks/counter.duck.js";
-import { selectCounter } from '../../ducks/counter.duck.js';
-
+import { incremented, decremented, reset, selectCounter } from "../../ducks/counter.duck.js";
 
 export function CounterPage() {
     const dispatch = useDispatch();
