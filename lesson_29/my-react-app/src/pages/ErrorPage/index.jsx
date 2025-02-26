@@ -6,7 +6,7 @@ export function ErrorPage() {
             renderHeader={() => <Header />}
             renderMain={() => (
                 <div>
-                    <h1>EROOR PAGE</h1>
+                    <h3>Error 404 not found</h3>
                 </div>
             )}
             renderFooter={() => <Footer />}
