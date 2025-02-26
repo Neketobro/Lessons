@@ -9,9 +9,6 @@ export function TodosPage() {
     const dispatch = useDispatch();
     const todos = useSelector(selectTodo);
 
-    console.log(todos);
-    
-
     function submitHandler(value) {
         if (!value.nameTodo.trim()) return;
 
@@ -50,7 +47,7 @@ export function TodosPage() {
                             <ul>
                                 {todos.map(({ name, id }) => (
                                     <li key={id}>
-                                        Name: {name}
+                                        Todo: {name}
                                         <button onClick={() => dispatch(deleteTodo(id))}>
                                             Remove
                                         </button>

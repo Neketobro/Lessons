@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Field, Formik, Form, ErrorMessage } from 'formik';
 import { todosScheme } from '../../services';
-import './Todos.scss';
+import './Todos.scss'; 
 
 export function Todos() {
     const [todos, setTodos] = useState([]);    
@@ -16,7 +16,6 @@ export function Todos() {
     }
 
     function submitHandler(values) {
-        console.log('value in function ->', values.todoText);
         if (values.todoText.trim() === '') return;
         setTodos([...todos, values.todoText]);
     }
