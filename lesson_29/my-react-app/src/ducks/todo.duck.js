@@ -1,0 +1,28 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+    nameTodo: [],
+}
+const tosoSlice = createSlice({
+    name: 'todoList',
+    initialState,
+    reducers: {
+        addTodo: (state, {payload}) => {
+            state.nameTodo.push(payload);
+        },
+        deleteTodo: (state, {payload}) => {
+            state.nameTodo = [...state.nameTodo].filter(({id}) => id !== payload)
+        },
+        resetAllTodo: (state) => {
+            state.nameTodo = initialState.nameTodo
+        },
+    },
+    selectors: {
+        selectTodo: (state) => state.nameTodo
+    }
+})
+export const { selectTodo } = tosoSlice.selectors;
+export const { addTodo, deleteTodo, resetAllTodo } = tosoSlice.actions;
+
+export default tosoSlice.reducer;
+
