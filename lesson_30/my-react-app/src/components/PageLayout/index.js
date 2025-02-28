@@ -1,1 +1,1 @@
-export * from './PageLayout.jsx'
+export * from './PageLayout.jsx';

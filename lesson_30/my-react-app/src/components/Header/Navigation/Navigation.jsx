@@ -1,23 +1,14 @@
-import { NavLink } from "react-router-dom";
 import style from "./Navigation.module.scss";
 
 export function Navigation() {
-    const { list, active, pending } = style;
+    const { navBtn, navPanel} = style;
 
     return (
         <nav>
-            <ul className={`${list} border`}>
-                <li>
-                    <NavLink
-                        to="/"
-                        className={({ isActive, isPending }) =>
-                            isActive ? active : isPending ? pending : ""
-                        }
-                    >
-                        Main
-                    </NavLink>
-                </li>
-            </ul>
+            <div className={`${navPanel}`}>
+                <p>https://swapi.dev/api/</p>
+            </div>
+            <button className={navBtn}>Get Info</button>
         </nav>
     );
 }

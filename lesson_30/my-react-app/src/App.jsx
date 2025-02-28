@@ -1,14 +1,13 @@
-import { RouterProvider } from 'react-router-dom';
-import { router } from './route/index.js';
-import { Loader } from './components/Loader/index.js';
+import { Footer, Header, Main, PageLayout } from './components/index.js';
+import "./App.css";
 
 function App() {
   return (
-    <RouterProvider
-      router={router}
-      fallbackElement={<Loader />}
-      future={{ v7_startTransition: true }}
-    />
+    <PageLayout
+        renderHeader={() => <Header />}
+        renderFooter={() => <Footer />}
+        renderMain={() => <Main />}
+      />
   )
 }
 export default App;
