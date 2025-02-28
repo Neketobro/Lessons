@@ -9,9 +9,9 @@ export function PageLayout({
 
     return (
         <div className={container}>
-            <header className={`${header} container`}>{renderHeader()}</header>
-            <main className={`${main} container border`}>{renderMain()}</main>
-            <footer className={`${footer} container`}>{renderFooter()}</footer>
+            <header className={header}>{renderHeader()}</header>
+            <main className={`${main} border`}>{renderMain()}</main>
+            <footer className={footer}>{renderFooter()}</footer>
         </div>
     )
 }

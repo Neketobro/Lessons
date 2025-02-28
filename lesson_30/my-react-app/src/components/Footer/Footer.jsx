@@ -1,11 +1,11 @@
-// import style from './Footer.module.scss'
+import style from './Footer.module.scss'
 
 export function Footer() {
-    // const { footer } = style;
+    const { btnClear} = style;
 
     return (
         <div>
-            <h4>Footer</h4>
+            <button className={`${btnClear} border`}>Clear</button>
         </div>
     )
 }
