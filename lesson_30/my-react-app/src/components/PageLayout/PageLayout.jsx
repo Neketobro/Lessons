@@ -1,3 +1,5 @@
+import style from './PageLayout.module.scss';
+
 export function PageLayout({
     renderHeader = () => null,
     renderMain = () => null,

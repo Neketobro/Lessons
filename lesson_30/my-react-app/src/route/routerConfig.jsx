@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage, CounterPage, TodosPage } from "../pages";
+import { ErrorPage, MainPage } from "../pages";
 
 const routerConfig = [
   {
@@ -7,13 +7,7 @@ const routerConfig = [
     errorElement: <ErrorPage />,
     id: "root",
     children: [
-      { index: true, element: <CounterPage /> },
-      {
-        path: "todos",
-        children: [
-          { index: true, element: <TodosPage /> }
-        ],
-      },
+      { index: true, element: <MainPage /> },
     ],
   },
 ];

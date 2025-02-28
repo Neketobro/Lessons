@@ -1,13 +1,12 @@
 import { Footer, Header, PageLayout } from '../../components';
 
-export function MainPage() {
-    
+export function ErrorPage() {
     return (
         <PageLayout
             renderHeader={() => <Header />}
             renderMain={() => (
                 <div>
-                    <p>MainPage</p>
+                    <h3>Error 404 not found</h3>
                 </div>
             )}
             renderFooter={() => <Footer />}
