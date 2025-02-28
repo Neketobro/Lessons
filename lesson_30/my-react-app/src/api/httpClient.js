@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.SWAPI_BASE_URL;
+const baseURL = import.meta.env.VITE_SWAPI_BASE_URL;
 const axiosConfig = () => {
     axios.create({
         baseURL,
@@ -14,6 +14,8 @@ const generiqRequest = async ({requestType, url, data, signal}) => {
     try {
         const httpClient = axiosConfig(signal);
         const response = await httpClient[requestType](url, data);
+        console.log(requestType);
+        
 
         return response
     } catch (e) {
