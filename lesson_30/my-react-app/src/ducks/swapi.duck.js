@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-    swapi: [],
+    swapi: {},
 }
 
 const swapiSlice = createSlice({
     name: "swapi",
     initialState,
     reducers: {
-        addSwap: (state, { payload }) => {
-            console.log(state.swapi);
-            console.log(payload);
+        searchSwapi: (state, { payload }) => {
+            console.log(payload.text);
+        },
+        clearSwapi: (state) => {
+            state.swapi = initialState.swapi;
         }
     },
     extraReducers: (builder) => {
@@ -27,7 +29,7 @@ const swapiSlice = createSlice({
         })
     },
     selectors: {
-        selectSwapi: (state) => state.users,
+        selectSwapi: (state) => state.swapi,
         selectStatus: (state) => state.status,
     },
 })
@@ -36,11 +38,10 @@ export const fetchSwapi = createAsyncThunk(
     'swapi/fetchswapi',
     async (_, { signal, rejectedWithValue }) => {
         try {
-            const response = await fetch(procces.env.SWAPI_BASE_URL, { signal });
+            const response = await fetch(import.meta.env.VITE_SWAPI_BASE_URL, { signal });
+            const data = await response.json();
 
-            return response.map(({ people }) => {
-                people
-            })
+            return data;
         } catch (e) {
             rejectedWithValue(e.message ?? 'Ups, failed to fetch swapi')
         }
@@ -56,6 +57,6 @@ export const fetchSwapi = createAsyncThunk(
     }
 )
 
-export const { addSwap } = swapiSlice.actions;
+export const { clearSwapi, searchSwapi } = swapiSlice.actions;
 export const { selectSwapi, selectStatus } = swapiSlice.selectors;
 export default swapiSlice.reducer;
