@@ -1,12 +1,13 @@
 .btnClear {
-    width: 100px;
+    width: 70px;
     height: 50px;
-    background: yellow;
+    background: #ffbb00;
+    font-size: 20px;
     outline: none;
     transition: all .2s;
     
     &:hover {
         cursor: pointer;
-        background: rgb(173, 173, 0);
+        background: #ff9500;
     }
 }
