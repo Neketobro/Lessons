@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import counterReducer from "../ducks/swapi.duck.js";
+import swapiReducer from "../ducks/swapi.duck.js";
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        swapi: swapiReducer, 
+    }
 })

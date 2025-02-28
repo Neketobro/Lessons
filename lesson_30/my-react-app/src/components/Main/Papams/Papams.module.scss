@@ -1,0 +1,15 @@
+.paramsBox {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    li {
+        color: #fff;
+        background: #808080;
+        border-radius: 10px;
+        padding: 5px 10px;
+    }
+}

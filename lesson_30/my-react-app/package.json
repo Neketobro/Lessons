@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
+    "axios": "^1.8.1",
     "dotenv": "^16.4.7",
     "formik": "^2.4.6",
     "react": "^19.0.0",
@@ -23,6 +24,7 @@
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "globals": "^15.14.0",
+    "redux-logger": "^3.0.6",
     "vite": "^6.1.0"
   }
 }
