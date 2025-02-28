@@ -6,7 +6,7 @@ export function Navigation() {
 
     return (
         <nav>
-            <ul className={list}>
+            <ul className={`${list} border`}>
                 <li>
                     <NavLink
                         to="/"

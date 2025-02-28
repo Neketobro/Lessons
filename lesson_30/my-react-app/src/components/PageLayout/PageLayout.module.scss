@@ -1,12 +1,35 @@
-.container {
-    background: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    padding-inline: 10%;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px;
+    min-height: calc(100vh - 16px);
+}
+
 .header {
-    background: blue;
+    flex: 0 0 100%;
+    height: 100px;
 }
+
 .main {
-    background: green;
+    flex: 1 0 100%;
+    height: auto;
 }
+
 .footer {
-    background: yellow;
+    flex: 0 0 100%;
+    height: auto;
 }

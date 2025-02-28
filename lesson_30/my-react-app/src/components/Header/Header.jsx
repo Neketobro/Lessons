@@ -2,8 +2,8 @@ import { Navigation} from './Navigation/index.js';
 
 export function Header() {
     return (
-        <div>
-            <h4>Header</h4>
+        <div className='container'>
+            <h1>SWAPI</h1>
             <Navigation />
         </div>
     )
