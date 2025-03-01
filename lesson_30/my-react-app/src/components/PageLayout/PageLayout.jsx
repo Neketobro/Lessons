@@ -10,7 +10,7 @@ export function PageLayout({
     return (
         <div className={container}>
             <header className={header}>{renderHeader()}</header>
-            <main className={`${main} border`}>{renderMain()}</main>
+            <main className={main}>{renderMain()}</main>
             <footer className={footer}>{renderFooter()}</footer>
         </div>
     )
