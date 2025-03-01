@@ -6,7 +6,10 @@ function App() {
     <PageLayout
       renderHeader={() => <Header />}
       renderFooter={() => <Footer />}
-      renderMain={() => <Main />}
+      renderMain={() =>
+        <div className='border'>
+          <Main />
+        </div>}
     />
   )
 }
