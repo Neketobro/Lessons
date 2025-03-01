@@ -36,6 +36,7 @@ nav {
     border: none;
     outline: none;
   }
+
   .navBtn {
     background: #9a9a9a;
     color: #fff;
@@ -47,11 +48,12 @@ nav {
     border: 1px solid #c5c5c5;
     outline: none;
     transition: .2s all;
-    
+
     &:hover {
       cursor: pointer;
       background: #adadad;
     }
+
     &:active {
       background: #c5c5c5;
     }
