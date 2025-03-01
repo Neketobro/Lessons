@@ -3,6 +3,7 @@ import { getSwapi } from '../api/swapi';
 
 const initialState = {
     swapi: {},
+    urlway: null,
 }
 const swapiSlice = createSlice({
     name: "swapi",
@@ -16,9 +17,10 @@ const swapiSlice = createSlice({
         builder.addCase(fetchSwapi.pending, (state) => {
             state.status = 'loading'
         })
-        builder.addCase(fetchSwapi.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchSwapi.fulfilled, (state, { payload, meta }) => {
             state.status = 'success';
             state.swapi = payload;
+            state.urlway = meta.arg;
         })
         builder.addCase(fetchSwapi.rejected, (state, { payload }) => {
             state.status = 'error';
@@ -28,20 +30,21 @@ const swapiSlice = createSlice({
     selectors: {
         selectSwapi: (state) => state.swapi,
         selectStatus: (state) => state.status,
+        selectUrlWay: (state) => state.urlway,
     },
 })
 
 export default swapiSlice.reducer;
 
 export const { clearSwapi } = swapiSlice.actions;
-export const { selectSwapi, selectStatus } = swapiSlice.selectors;
+export const { selectSwapi, selectStatus, selectUrlWay } = swapiSlice.selectors;
 
 export const fetchSwapi = createAsyncThunk(
     'swapi/fetchswapi',
     async (payload, { signal, rejectedWithValue }) => {
         try {
             const response = await getSwapi(payload, signal);
-        
+
             return response.data;
         } catch (e) {
             rejectedWithValue(e.message ?? 'Ups, failed to fetch swapi')

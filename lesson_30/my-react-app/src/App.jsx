@@ -4,10 +4,10 @@ import "./App.css";
 function App() {
   return (
     <PageLayout
-        renderHeader={() => <Header />}
-        renderFooter={() => <Footer />}
-        renderMain={() => <Main />}
-      />
+      renderHeader={() => <Header />}
+      renderFooter={() => <Footer />}
+      renderMain={() => <Main />}
+    />
   )
 }
 export default App;

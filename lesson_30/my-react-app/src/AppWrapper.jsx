@@ -1,6 +1,6 @@
 import App from './App.jsx'
-import {Provider} from 'react-redux'
-import {store} from './store/store.js'
+import { Provider } from 'react-redux'
+import { store } from './store/store.js'
 
 export function AppWrapper() {
     return (
