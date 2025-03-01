@@ -1,14 +1,13 @@
 import { useDispatch } from "react-redux";
 import style from "./Navigation.module.scss";
 import { Formik, Field, Form } from 'formik';
-import { searchSwapi } from '../../../ducks/swapi.duck.js'
 
 export function Navigation() {
     const { navBtn, navPanel, inputText, from } = style;
     const dispatch = useDispatch();
 
     function submitHandler(value) {
-        dispatch(searchSwapi(value))
+        console.log(value);
     }
 
     return (

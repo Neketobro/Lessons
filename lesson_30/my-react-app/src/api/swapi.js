@@ -1,4 +1,5 @@
-import {get} from './httpClient.js';
+import { get } from './httpClient.js';
+
 export async function getSwapi(signal) {
-    return await get('swapi', signal);
+    return await get('/people/1', signal);
 }

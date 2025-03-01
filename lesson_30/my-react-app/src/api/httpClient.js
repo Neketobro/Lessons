@@ -1,32 +1,31 @@
-import axios from 'axios';
+import axios from "axios";
 
 const baseURL = import.meta.env.VITE_SWAPI_BASE_URL;
-const axiosConfig = () => {
+const axiosConf = (signal = {}) =>
     axios.create({
         baseURL,
         signal,
         headers: {
-            "Content-Type": "application/json"
+            "Content-type": "application/json",
         },
-    })
-}
-const generiqRequest = async ({requestType, url, data, signal}) => {
-    try {
-        const httpClient = axiosConfig(signal);
-        const response = await httpClient[requestType](url, data);
-        console.log(requestType);
-        
+        timeout: 2000,
+    });
 
-        return response
+const genericRequest = async ({ requestType = "get", url, data, signal }) => {
+    try {
+        const httpClient = axiosConf(signal);
+        const response = await httpClient[requestType](url, data);
+        
+        return response;
     } catch (e) {
         if (axios.isAxiosError(e) && e.response) {
             console.error(e.response);
         } else {
-            throw new Error('Unknow error');
+            throw new Error("Unknown error.");
         }
     }
-}
+};
 
 export const get = (url, signal) => {
-    return generiqRequest({requestType: 'get', url, signal})
-}
+    return genericRequest({ requestType: "get", url, signal });
+};

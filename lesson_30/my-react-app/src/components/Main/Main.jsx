@@ -16,8 +16,7 @@ export function Main() {
         dispatch(fetchSwapi());
     }, [])
 
-    // if (status === "loading") return <Loader />;
-    console.log(JSON.stringify(swapi));
+    if (status === "loading") return <Loader />;
 
     return (
         <div>
