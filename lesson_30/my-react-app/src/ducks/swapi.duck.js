@@ -31,11 +31,16 @@ const swapiSlice = createSlice({
     },
 })
 
+export default swapiSlice.reducer;
+
+export const { clearSwapi } = swapiSlice.actions;
+export const { selectSwapi, selectStatus } = swapiSlice.selectors;
+
 export const fetchSwapi = createAsyncThunk(
     'swapi/fetchswapi',
-    async (_, { signal, rejectedWithValue }) => {
+    async (payload, { signal, rejectedWithValue }) => {
         try {
-            const response = await getSwapi(signal);
+            const response = await getSwapi(payload, signal);
         
             return response.data;
         } catch (e) {
@@ -43,7 +48,7 @@ export const fetchSwapi = createAsyncThunk(
         }
     },
     {
-        condition(_, { getState }) {
+        condition(payload, { getState }) {
             const {
                 swapi: { status },
             } = getState();
@@ -52,7 +57,3 @@ export const fetchSwapi = createAsyncThunk(
         }
     }
 )
-
-export const { clearSwapi } = swapiSlice.actions;
-export const { selectSwapi, selectStatus } = swapiSlice.selectors;
-export default swapiSlice.reducer;

@@ -1,4 +1,3 @@
-// import style from './Main.module.scss'
 import { Loader } from '../Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { Papams } from './Papams'
@@ -16,13 +15,17 @@ export function Main() {
         dispatch(fetchSwapi());
     }, [])
 
-    if (status === "loading") return <Loader />;
-
     return (
         <div>
             <Papams />
             <div>
-                {status === "loading" ? <Loader /> : <pre><code className={codeStyle}>{JSON.stringify(swapi, null, 4)}</code></pre>}
+                {
+                    status === "loading"
+                        ? <Loader />
+                        : <pre>
+                            <code className={codeStyle}>{JSON.stringify(swapi, null, 4)}</code>
+                        </pre>
+                }
             </div>
         </div>
     )

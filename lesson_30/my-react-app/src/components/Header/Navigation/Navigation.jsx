@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { fetchSwapi } from "../../../ducks/swapi.duck";
 import style from "./Navigation.module.scss";
 import { Formik, Field, Form } from 'formik';
 
@@ -7,7 +8,7 @@ export function Navigation() {
     const dispatch = useDispatch();
 
     function submitHandler(value) {
-        console.log(value);
+        dispatch(fetchSwapi(value.text));
     }
 
     return (
@@ -19,7 +20,6 @@ export function Navigation() {
                     onSubmit={(values, formikHelper) => {
                         setTimeout(() => {
                             submitHandler(values);
-                            formikHelper.resetForm();
                             formikHelper.setSubmitting(false);
                         }, 1000)
                     }}

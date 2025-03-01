@@ -15,7 +15,7 @@ const genericRequest = async ({ requestType = "get", url, data, signal }) => {
     try {
         const httpClient = axiosConf(signal);
         const response = await httpClient[requestType](url, data);
-        
+
         return response;
     } catch (e) {
         if (axios.isAxiosError(e) && e.response) {
