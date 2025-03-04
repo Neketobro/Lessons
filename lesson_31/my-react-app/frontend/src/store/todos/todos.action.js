@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const FETCH_TODOS = createAction("user/todos");
-export const FETCH_TODOS_LOADING = createAction("user/todos/loading");
-export const FETCH_TODOS_SUCCESS = createAction("user/todos/success");
-export const FETCH_TODOS_ERROR = createAction("user/todos/error");
+export const FETCH_TODOS = createAction("todos/fetchTodos");
+export const FETCH_TODOS_LOADING = createAction("todos/fetchTodos/loading");
+export const FETCH_TODOS_SUCCESS = createAction("todos/fetchTodos/success");
+export const FETCH_TODOS_ERROR = createAction("todos/fetchTodos/error");

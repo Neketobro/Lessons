@@ -1,19 +1,25 @@
 import { getTodos } from "../../api";
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest, select } from 'redux-saga/effects';
 import { FETCH_TODOS, FETCH_TODOS_ERROR, FETCH_TODOS_LOADING, FETCH_TODOS_SUCCESS } from "./todos.action";
+import { selectStatus } from "./todos.slice";
 
 export function* fetchTodosSaga({ payload }) {
+    yield put(FETCH_TODOS_LOADING());
+    const status = select(selectStatus);
     try {
-        yield put(FETCH_TODOS_LOADING);
-
-        const { data } = yield call(getTodos, payload.signal);
-
-        // const preparedData = data
-        console.log(data);
-
-        yield put(FETCH_TODOS_SUCCESS(data));
+        if (status === "loading") return;
+        const response  = yield call(getTodos, payload);
+        
+        const preparendData = {
+            data: response.data,
+            status: response.status,
+        };
+        
+        yield put(FETCH_TODOS_SUCCESS(preparendData));
     } catch (e) {
-        yield put(FETCH_TODOS_ERROR);
+        console.log(e);
+        
+        yield put(FETCH_TODOS_ERROR());
     }
 }
 

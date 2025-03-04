@@ -8,7 +8,6 @@ const axiosConf = (signal = {}) =>
         headers: {
             "Content-type": "application/json",
         },
-        timeout: 2000,
     });
 
 const genericRequest = async ({ requestType = "get", url, data, signal }) => {
@@ -27,5 +26,6 @@ const genericRequest = async ({ requestType = "get", url, data, signal }) => {
 };
 
 export const get = (url, signal) => {
-    return genericRequest({ requestType: "get", url, signal });
+    const result = genericRequest({ requestType: "get", url, signal });
+    return result;
 };

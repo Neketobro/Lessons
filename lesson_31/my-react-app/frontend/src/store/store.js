@@ -10,7 +10,7 @@ export const store = configureStore({
         todos: todosSagaReducer,
     },
     middleware: (getDefaultMiddleware) => [
-        ...getDefaultMiddleware({thunk: false, seriazableCheck: false}),
+        ...getDefaultMiddleware({thunk: false, serializableCheck: false}),
         sagaMiddleware,
     ]
 })
