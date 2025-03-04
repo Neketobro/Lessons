@@ -1,8 +1,11 @@
 import { Formik, ErrorMessage, Field, Form } from 'formik';
+import style from './FormTodo.module.scss';
 
 export function FormTodo() {
+    const { form, btnSend, formWrapper } = style;
+
     return (
-        <div>
+        <div className={formWrapper}>
             <Formik
                 initialValues={{ nameTodo: '' }}
                 onSubmit={(values, formikHelper) => {
@@ -14,10 +17,10 @@ export function FormTodo() {
                 }}>
                 <Form>
                     <p>
-                        {/* <ErrorMessage name="nameTodo" /> */}
+                        <ErrorMessage name="nameTodo" />
                     </p>
-                    <Field type="text" name="nameTodo" placeholder="Enter your value" />
-                    <button type='submit'>Send</button>
+                    <Field className={form} type="text" name="nameTodo" placeholder="Enter your value" />
+                    <button className={btnSend} type='submit'>Send</button>
                 </Form>
             </Formik>
         </div>
