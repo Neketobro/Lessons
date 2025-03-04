@@ -1,10 +1,14 @@
+import { Footer, Header, PageLayout, TodosPage } from './components/index.js';
 
 function App() {
 
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <PageLayout
+      renderHeader={() => <Header />}
+      renderFooter={() => <Footer />}
+      renderMain={() => <TodosPage />}
+    />
+
   )
 }
 
