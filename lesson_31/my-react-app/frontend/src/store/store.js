@@ -1,8 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import todosReducer from './todos/todos.slice.js';
+import todosSagaReducer from './todos/todos.slice.js';
+import createSagaMiddleware from "redux-saga";
+import { rootSaga } from './root.saga.js';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: {
-        todos: todosReducer,
+        todos: todosSagaReducer,
     },
+    middleware: (getDefaultMiddleware) => [
+        ...getDefaultMiddleware({thunk: false, seriazableCheck: false}),
+        sagaMiddleware,
+    ]
 })
+sagaMiddleware.run(rootSaga);
