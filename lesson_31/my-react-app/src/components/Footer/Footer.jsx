@@ -1,7 +1,11 @@
+import style from './Footer.module.scss'; 
+
 export function Footer() {
+    const {footer} = style;
+
     return (
-        <>
-            <h1>Footer</h1>
-        </>
+        <div className={footer}>
+            <h1>Todos count:</h1>
+        </div>
     )
 }
