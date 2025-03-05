@@ -1,23 +1,26 @@
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 import style from './FormTodo.module.scss';
+import { addTodo } from '../../../store/todos';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 export function FormTodo() {
     const { form, btnSend, formWrapper } = style; 
+    const dispatch = useDispatch()
 
     function submitHandler(value) {
         console.log(value);
-    }
-    // async function TosoFetch() {
-    //     const res = await fetch(import.meta.env.VITE_SWAPI_BASE_URL);       
-    //     // const res = await fetch('https://swapi.dev/api/');       
-    //     const data = await res.json();
+        if (!value.nameTodo.trim()) return;
 
-    //     console.log(data);
+        const data = {
+            id: uuidv4(),
+            title: value.nameTodo,
+            complate: false
+        }
+        // console.log(data);
         
-    // }
-    // TosoFetch(); 
-
-    // if (status === "loading") return <Loader />;
+        dispatch(addTodo(data));
+    }
 
     return (
         <div className={formWrapper}>

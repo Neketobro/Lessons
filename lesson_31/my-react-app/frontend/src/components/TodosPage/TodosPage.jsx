@@ -14,7 +14,7 @@ export function TodosPage() {
     const status = useSelector(selectStatus);
 
     console.log('todos', todos);
-    console.log('status', status);
+    // console.log('status', status);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -25,7 +25,7 @@ export function TodosPage() {
         };
     }, []);
 
-    if (status === "loading") return <Loader />
+    if (status === "loading") return <Loader />;
 
     return (
         <div className={main}>
@@ -35,10 +35,12 @@ export function TodosPage() {
                     <ul className={containerTodo}>
                         {todos.map(({ title, id, complate }) => (
                             <li key={id}>
-                                <input className={checkbox} type="checkbox" checked={complate} />
-                                <h4>
+                                <input className={checkbox} type="checkbox" defaultChecked={complate} onChange={(e) => {
+                                    console.log(e.target.checked);
+                                }} />
+                                <p>
                                     {title}
-                                </h4>
+                                </p>
                                 <div>
                                     <button className={btn}>Redact</button>
                                     <button className={btn}>Delete</button>
@@ -51,15 +53,3 @@ export function TodosPage() {
         </div>
     )
 }
-
-// {todos.length > 0 && (
-//     <>
-//         <ul>
-//             {todos.map(({ name, id }) => (
-//                 <li key={id}>
-//                     Todo: {name}
-//                 </li>
-//             ))}
-//         </ul>
-//     </>
-// )}
