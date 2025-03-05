@@ -10,12 +10,7 @@ export function* fetchTodosSaga({ payload }) {
         if (status === "loading") return;
         const response  = yield call(getTodos, payload);
         
-        const preparendData = {
-            data: response.data,
-            status: response.status,
-        };
-        
-        yield put(FETCH_TODOS_SUCCESS(preparendData));
+        yield put(FETCH_TODOS_SUCCESS(response.data));
     } catch (e) {
         console.log(e);
         
