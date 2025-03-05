@@ -7,17 +7,6 @@ export function FormTodo() {
     function submitHandler(value) {
         console.log(value);
     }
-    // async function TosoFetch() {
-    //     const res = await fetch(import.meta.env.VITE_SWAPI_BASE_URL);       
-    //     // const res = await fetch('https://swapi.dev/api/');       
-    //     const data = await res.json();
-
-    //     console.log(data);
-        
-    // }
-    // TosoFetch(); 
-
-    // if (status === "loading") return <Loader />;
 
     return (
         <div className={formWrapper}>

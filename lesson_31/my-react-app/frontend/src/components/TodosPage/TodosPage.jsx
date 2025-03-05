@@ -33,9 +33,11 @@ export function TodosPage() {
             {todos && (
                 <>
                     <ul className={containerTodo}>
-                        {todos.map(({ title, id, complate }) => (
+                        {todos.map(({ title, id }) => (
                             <li key={id}>
-                                <input className={checkbox} type="checkbox" checked={complate} />
+                                <input className={checkbox} type="checkbox" onChange={() => {
+                                    if (!checked) console.log(`${id} cheked`);
+                                }} />
                                 <h4>
                                     {title}
                                 </h4>
