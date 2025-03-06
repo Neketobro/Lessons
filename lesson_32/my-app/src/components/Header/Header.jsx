@@ -1,7 +1,11 @@
+import { AppBar } from '@mui/material';
+
+
 export function Header() {
+    
     return (
-        <>
-            <h2>Header</h2>
-        </>
+        <div>
+            <AppBar />
+        </div>
     )
 }
