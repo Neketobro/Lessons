@@ -18,7 +18,6 @@ function App() {
           router={router}
           fallbackElement={<Loader />}
           future={{ v7_startTransition: true }}
-
         />
       </CssBaseline>
     </ThemeProvider>

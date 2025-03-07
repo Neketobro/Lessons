@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/material";
 export function PageLayout({
     renderHeader,
     renderFooter,
-    renderContent,
+    renderMain,
     children,
 }) {
     return (
@@ -21,7 +21,7 @@ export function PageLayout({
                     {typeof renderHeader === "function" ? renderHeader() : renderHeader}
                 </Box>
                 <Box component="main" sx={{ flex: "1 0 100%", height: "auto" }}>
-                    {renderContent ? renderContent() : children}
+                    {renderMain ? renderMain() : children}
                 </Box>
                 <Box component="footer" sx={{ flex: "0 0 100%", height: "auto" }}>
                     {typeof renderFooter === "function" ? renderFooter() : renderFooter}
