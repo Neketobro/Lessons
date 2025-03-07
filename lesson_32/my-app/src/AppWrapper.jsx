@@ -1,11 +1,12 @@
 import App from "./App";
-import { CssBaseline } from "@mui/material";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 export function AppWrapper() {
 
     return (
-        <CssBaseline>
+        <Provider store={store}>
             <App />
-        </CssBaseline>
+        </Provider>
     )
 }
