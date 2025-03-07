@@ -1,4 +1,5 @@
 import { Box, Tab, Tabs } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 export function Navigation() {
 
@@ -10,6 +11,9 @@ export function Navigation() {
                     <Tab label="Item Two" {...a11yProps(1)} />
                     <Tab label="Item Three" {...a11yProps(2)} />
                 </Tabs> */}
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/todolist">Todo List</NavLink>
+                <NavLink to="/swapi">SWAPI</NavLink>
             </Box>
         </Box>
     )
