@@ -1,17 +1,31 @@
-import { PageLayout, Footer, Header } from "./components"
+import { Loader } from "./components"
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router/index'
 
 function App() {
 
   return (
-    <PageLayout
-      renderHeader={() => <Header />}
-      renderFooter={() => <Footer />}
-      renderMain={() =>
-        <div className='border'>
-          <h3>main</h3>
-        </div>}
+    <RouterProvider
+      router={router}
+      fallbackElement={<Loader />}
+      future={{ v7_startTransition: true }}
     />
   )
 }
 
 export default App
+
+// import { RouterProvider } from 'react-router-dom';
+// import { router } from './router/index'
+// import { Loader } from './components/Loader/Loader';
+
+// function App() {
+//   return (
+//     <RouterProvider
+//       router={router}
+//       fallbackElement={<Loader />}
+//       future={{ v7_startTransition: true }}
+//     />
+//   )
+// }
+// export default App;

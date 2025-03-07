@@ -1,11 +1,13 @@
-import { AppBar } from '@mui/material';
-
+import { Box } from '@mui/material';
+import { Navigation } from './Navigation';
+import { SwitchTheme } from './SwitchTheme';
 
 export function Header() {
-    
+
     return (
-        <div>
-            <AppBar />
-        </div>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Navigation />
+            <SwitchTheme />
+        </Box>
     )
 }
