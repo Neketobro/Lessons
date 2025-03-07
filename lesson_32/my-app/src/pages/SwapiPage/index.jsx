@@ -3,10 +3,7 @@ import { Box, Avatar } from '@mui/material';
 import { useLoaderData } from 'react-router';
 
 export function SwapiPage() {
-    const users = useLoaderData();
-
-    console.log(users);
-    
+    const users = useLoaderData();    
 
     return (
         <PageLayout
