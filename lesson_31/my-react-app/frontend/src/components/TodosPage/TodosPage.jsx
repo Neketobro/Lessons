@@ -3,7 +3,7 @@ import style from './TodosPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectTodos, selectStatus } from '../../store/todos';
-import { FETCH_TODOS, FETCH_TODOS_DELETE_TODO } from '../../store/todos';
+import { FETCH_TODOS, FETCH_TODOS_DELETE_TODO, FETCH_TODOS_CHANGE, FETCH_TODOS_CHECK } from '../../store/todos';
 import { Loader } from '../Loader';
 
 export function TodosPage() {
@@ -14,10 +14,29 @@ export function TodosPage() {
     const status = useSelector(selectStatus);
 
     // console.log('todos', todos);
-    // console.log('status', status);
+    console.log('status', status);
 
     function handleDelete(id) {
         dispatch(FETCH_TODOS_DELETE_TODO(id));
+    };
+
+    function handleRedact(id) {
+        const newTitle = prompt('Enter new title:', )
+
+        const data = {
+            id: id,
+            title: newTitle,
+        }
+        dispatch(FETCH_TODOS_CHANGE(data));
+    }
+
+    function handleCheck(id, complate) {
+        const data = {
+            id: id,
+            complate: complate ? complate = false : complate = true,
+        }
+
+        dispatch(FETCH_TODOS_CHECK(data));
     };
 
     useEffect(() => {
@@ -39,14 +58,12 @@ export function TodosPage() {
                     <ul className={containerTodo}>
                         {todos.map(({ title, id, complate }) => (
                             <li key={id}>
-                                <input className={checkbox} type="checkbox" defaultChecked={complate} onChange={(e) => {
-                                    console.log(e.target.checked);
-                                }} />
+                                <input className={checkbox} type="checkbox" defaultChecked={complate} onChange={() => handleCheck(id, complate)} />
                                 <p>
                                     {title}
                                 </p>
                                 <div>
-                                    <button className={btn}>Redact</button>
+                                    <button className={btn} onClick={() => handleRedact(id)}>Redact</button>
                                     <button className={btn} onClick={() => handleDelete(id)}>Delete</button>
                                 </div>
                             </li>
