@@ -18,11 +18,6 @@ const initialState = {
 const todosSlice = createSlice({
     name: 'todos',
     initialState,
-    reducers: {
-        addTodo: (state, { payload }) => {
-            state.value.push(payload);
-        }
-    },
     selectors: {
         selectTodos: (state) => state.value,
         selectStatus: (state) => state.status,
@@ -48,7 +43,7 @@ const todosSlice = createSlice({
                 state.value = [...state.value].filter(({ id }) => id !== payload);
                 state.status = "success";
             })
-            .addCase(FETCH_TODOS_CHANGE_SUCCESS, (state, { payload }) => {
+            .addCase(FETCH_TODOS_CHANGE_SUCCESS, (state) => {
                 state.status = "success";
             })
             .addCase(FETCH_TODOS_CHECK_SUCCESS, (state) => {
@@ -59,5 +54,4 @@ const todosSlice = createSlice({
 
 export default todosSlice.reducer;
 
-export const { addTodo } = todosSlice.actions;
 export const { selectTodos, selectStatus } = todosSlice.selectors;
