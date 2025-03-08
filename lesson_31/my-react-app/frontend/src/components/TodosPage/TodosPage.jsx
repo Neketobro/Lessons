@@ -13,7 +13,15 @@ export function TodosPage() {
     const todos = useSelector(selectTodos);
     const status = useSelector(selectStatus);
 
-    // console.log('todos', todos);
+    useEffect(() => {
+        const controller = new AbortController();
+        dispatch(FETCH_TODOS(controller.signal));
+
+        return () => {
+            controller.abort();
+        };
+    }, []);
+    console.log('todos', todos);
     console.log('status', status);
 
     function handleDelete(id) {
@@ -22,7 +30,7 @@ export function TodosPage() {
 
     function handleRedact(id) {
         const newTitle = prompt('Enter new title:', )
-
+        if (!newTitle.trim()) return;
         const data = {
             id: id,
             title: newTitle,
@@ -39,21 +47,12 @@ export function TodosPage() {
         dispatch(FETCH_TODOS_CHECK(data));
     };
 
-    useEffect(() => {
-        const controller = new AbortController();
-        dispatch(FETCH_TODOS(controller.signal));
-
-        return () => {
-            controller.abort();
-        };
-    }, []);
-
     if (status === "loading") return <Loader />;
 
     return (
         <div className={main}>
             <FormTodo />
-            {todos && (
+            {todos.length > 0 && (
                 <>
                     <ul className={containerTodo}>
                         {todos.map(({ title, id, complate }) => (
