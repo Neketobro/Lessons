@@ -3,7 +3,7 @@ import style from './TodosPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectTodos, selectStatus } from '../../store/todos';
-import { FETCH_TODOS } from '../../store/todos';
+import { FETCH_TODOS, FETCH_TODOS_DELETE_TODO } from '../../store/todos';
 import { Loader } from '../Loader';
 
 export function TodosPage() {
@@ -13,8 +13,12 @@ export function TodosPage() {
     const todos = useSelector(selectTodos);
     const status = useSelector(selectStatus);
 
-    console.log('todos', todos);
+    // console.log('todos', todos);
     // console.log('status', status);
+
+    function handleDelete(id) {
+        dispatch(FETCH_TODOS_DELETE_TODO(id));
+    };
 
     useEffect(() => {
         const controller = new AbortController();
@@ -43,7 +47,7 @@ export function TodosPage() {
                                 </p>
                                 <div>
                                     <button className={btn}>Redact</button>
-                                    <button className={btn}>Delete</button>
+                                    <button className={btn} onClick={() => handleDelete(id)}>Delete</button>
                                 </div>
                             </li>
                         ))}

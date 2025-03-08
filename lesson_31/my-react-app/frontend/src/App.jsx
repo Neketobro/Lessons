@@ -8,7 +8,6 @@ function App() {
       renderFooter={() => <Footer />}
       renderMain={() => <TodosPage />}
     />
-
   )
 }
 
