@@ -27,7 +27,7 @@ export function FormTodo() {
                         submitHandler(values);
                         formikHelper.resetForm();
                         formikHelper.setSubmitting(false);
-                    }, 1000)
+                    }, 500)
                 }}>
                 <Form>
                     <p>

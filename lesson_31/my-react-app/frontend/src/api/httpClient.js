@@ -34,3 +34,6 @@ export const post = (url, data) => {
 export const del = (url) => {
     return genericRequest({ requestType: "delete", url });
 };
+export const patch = (url, data) => {
+    return genericRequest({ requestType: "patch", url, data });
+};
