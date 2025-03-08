@@ -49,10 +49,3 @@ export function CurriculumVitaePage() {
         />
     )
 }
-
-//                         <Box sx={{ width: '400px', backgroundColor: 'primary.light', borderRadius: '20px', padding: '10px' }}>
-//                             <Box sx={{ fontSize: '20px', fontWeight: 'bold' }}>Освіта</Box>
-//                             <Box component='p' sx={{ fontSize: '18px', fontWeight: 'bold' }}>ДНІПРОПЕТРОВСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ ВНУТРІШНІХ СПРАВ</Box>
-//                             <Box component='p'>Бакалавр</Box>
-//                             <Box component='p'>Спеціальність "Правоохоронна діяльність" Рік вступу та закінченя 2022-2025</Box>
-//                         </Box>
