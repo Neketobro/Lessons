@@ -29,9 +29,6 @@ export function* fetchTodosSaga({ payload }) {
         yield put(FETCH_TODOS_ERROR());
     }
 }
-export function* watchFetchTodosSagas() {
-    yield takeLatest(FETCH_TODOS, fetchTodosSaga);
-}
 
 export function* addTodoSaga({ payload }) {
     yield put(FETCH_TODOS_LOADING());
@@ -45,9 +42,6 @@ export function* addTodoSaga({ payload }) {
         console.log(e);
         yield put(FETCH_TODOS_ERROR());
     }
-}
-export function* watchAddTodoSagas() {
-    yield takeLatest(FETCH_TODOS_POST, addTodoSaga);
 }
 
 export function* deleteTodoSaga({ payload }) {
@@ -64,9 +58,6 @@ export function* deleteTodoSaga({ payload }) {
         yield put(FETCH_TODOS_ERROR());
     }
 }
-export function* watchDeleteTodoSagas() {
-    yield takeLatest(FETCH_TODOS_DELETE_TODO, deleteTodoSaga);
-}
 
 export function* changeTodoSaga({ payload }) {
     yield put(FETCH_TODOS_LOADING());
@@ -81,9 +72,6 @@ export function* changeTodoSaga({ payload }) {
         console.log(e);
         yield put(FETCH_TODOS_ERROR());
     }
-}
-export function* watchChengeTodoSagas() {
-    yield takeLatest(FETCH_TODOS_CHANGE, changeTodoSaga);
 }
 
 export function* checkTodoSaga({ payload }) {
@@ -100,6 +88,11 @@ export function* checkTodoSaga({ payload }) {
         yield put(FETCH_TODOS_ERROR());
     }
 }
-export function* watchCheckTodoSagas() {
+
+export function* watchFetchTodosSagas() {
+    yield takeLatest(FETCH_TODOS, fetchTodosSaga);
+    yield takeLatest(FETCH_TODOS_POST, addTodoSaga);
+    yield takeLatest(FETCH_TODOS_DELETE_TODO, deleteTodoSaga);
+    yield takeLatest(FETCH_TODOS_CHANGE, changeTodoSaga);
     yield takeLatest(FETCH_TODOS_CHECK, checkTodoSaga);
 }

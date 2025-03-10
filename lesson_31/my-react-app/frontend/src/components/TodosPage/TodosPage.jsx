@@ -21,8 +21,6 @@ export function TodosPage() {
             controller.abort();
         };
     }, []);
-    console.log('todos', todos);
-    console.log('status', status);
 
     function handleDelete(id) {
         dispatch(FETCH_TODOS_DELETE_TODO(id));
