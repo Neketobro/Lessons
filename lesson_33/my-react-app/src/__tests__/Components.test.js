@@ -1,6 +1,18 @@
 import { render, screen } from '@testing-library/react'
-import Header from '../components/Header/Header.jsx'
+import { MemoryRouter } from "react-router-dom";
+import { Navigation } from '../components/Header/Navigation/Navigation.jsx';
 
-describe('Header', () => {
+describe('Navigation', () => {
+    it('should have title Todo', () => {
+        render(
+            <MemoryRouter>
+                <Navigation />
+            </MemoryRouter>
+        );
 
+        const title = screen.getByText(/Todo/i);
+
+        expect(title).toBeDefined();
+        expect(title).not.toBeFalsy();
+    })
 })
