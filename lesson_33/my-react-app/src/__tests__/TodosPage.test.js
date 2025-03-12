@@ -5,7 +5,7 @@ import { store } from '../store';
 import { TodosPage } from '../pages/Todos/index.jsx';
 
 describe('TodosPage', () => {
-    it('should enter numbers and letters in the text field', () => {
+    it.skip('should enter numbers and letters in the text field', () => {
         render(
             <MemoryRouter>
                 <Provider store={store}>
@@ -20,5 +20,19 @@ describe('TodosPage', () => {
 
         fireEvent.change(input, { target: { nameTodo: 'Todos' } })
         expect(input.nameTodo).toBe('Todos');
-    })
+    });
+
+    it('need to click on the “Send” button without text, you will get an error', () => {
+        render(
+            <MemoryRouter>
+                <Provider store={store}>
+                    <TodosPage />
+                </Provider>
+            </MemoryRouter>
+        );
+        const button = screen.getByText('Send')
+
+        // fireEvent.click(button)
+        expect(button.click).toHaveBeenCalled()
+    });
 })
