@@ -14,7 +14,7 @@ export function Navigation() {
                             isActive ? active : isPending ? pending : ""
                         }
                     >
-                        Counter
+                        <h5>Counter</h5>
                     </NavLink>
                 </li>
                 <li>
@@ -24,7 +24,7 @@ export function Navigation() {
                             isActive ? active : isPending ? pending : ""
                         }
                     >
-                        Todo List
+                        <h5>Todo</h5>
                     </NavLink>
                 </li>
             </ul>
