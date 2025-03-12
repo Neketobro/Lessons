@@ -31,7 +31,7 @@ export function MainPage() {
             renderMain={() => (
                 <div>
                     <p>Todo Page</p>
-                    <input type="text" name="todo_input" ref={inputRef} />
+                    <input type="text" name="todo_input" placeholder='Enter name fot Todo' ref={inputRef} />
                     <button onClick={addTodo}>Create Todo</button>
                     <ul>
                         {todos.map((todo, index) => (
