@@ -1,0 +1,16 @@
+@use '../../service/style/config' as config;
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid config.$c-light;
+    border-radius: 20px;
+    margin: 10px;
+}

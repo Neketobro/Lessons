@@ -1,1 +1,1 @@
-export * from "./ErrorBoundary.jsx"
+export * from './ErrorBoundary.jsx';

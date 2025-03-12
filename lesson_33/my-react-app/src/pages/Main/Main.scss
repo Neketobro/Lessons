@@ -1,0 +1,15 @@
+@use "../../service/style/config" as config;
+
+.todo {
+    width: 200px;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    margin: 10px;
+}
+input {
+    margin: 10px;
+}

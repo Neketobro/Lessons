@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import style from "./PageLayout.module.scss";
+import { themeContext } from "../../context";
 
 export function PageLayout({
     renderHeader = () => null,
@@ -6,12 +8,13 @@ export function PageLayout({
     renderFooter = () => null,
 }) {
     const { container, header, main, footer } = style;
+    const { theme } = useContext(themeContext);
 
     return (
-        <div className={container}>
-            <header className={`${header} alert alert-secondary`}>{renderHeader()}</header>
+        <div className={`${theme} ${container}`}>
+            <header className={header}>{renderHeader()}</header>
             <main className={main}>{renderMain()}</main>
-            <footer className={`${footer} alert alert-secondary`}>{renderFooter()}</footer>
+            <footer className={footer}>{renderFooter()}</footer>
         </div>
     )
 }
