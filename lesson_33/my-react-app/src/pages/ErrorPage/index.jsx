@@ -1,15 +1,19 @@
 import { Footer, Header, PageLayout } from '../../components';
+import style from "./ErrorPage.module.scss";
 
 export function ErrorPage() {
-    return (
-        <PageLayout
-            renderHeader={() => <Header />}
-            renderMain={() => (
-                <div>
-                    <h3>Error 404 not found</h3>
-                </div>
-            )}
-            renderFooter={() => <Footer />}
-        />
-    )
+  const { container, label } = style;
+  return (
+    <PageLayout
+      renderHeader={() => <Header />}
+      renderFooter={() => <Footer />}
+      renderMain={() => (
+        <div className={container}>
+          <h1>Oops!</h1>
+          <p className={label}>404</p>
+          <p>Sorry, an unexpected error has occurred.</p>
+        </div>
+      )}
+    />
+  );
 }

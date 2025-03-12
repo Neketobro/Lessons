@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage, CounterPage, TodosPage } from "../pages";
+import { ErrorPage, MainPage, AboutMePage } from "../pages";
 
 const routerConfig = [
   {
@@ -7,11 +7,32 @@ const routerConfig = [
     errorElement: <ErrorPage />,
     id: "root",
     children: [
-      { index: true, element: <CounterPage /> },
+      { index: true, element: <MainPage /> },
       {
-        path: "todos",
+        path: "contact",
         children: [
-          { index: true, element: <TodosPage /> }
+          {
+            index: true,
+            loader: async ({ request }) => {
+              const resp = await fetch(
+                `https://reqres.in/api/users`,
+                { signal: request.signal }
+              );
+              const { data } = await resp.json();
+              return data
+            },
+            async lazy() {
+              const { ContactsPage } = await import('../pages/Contacts/index')
+
+              return { Component: ContactsPage }
+            }
+          }
+        ],
+      },
+      {
+        path: "about-me",
+        children: [
+          { index: true, element: <AboutMePage /> }
         ],
       },
     ],

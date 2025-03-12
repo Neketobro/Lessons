@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import style from "./Navigation.module.scss";
 
-export function Navigation() {
+export function Navigation({ navAttrs }) {
     const { list, active, pending } = style;
 
     return (
-        <nav>
+        <nav {...navAttrs}>
             <ul className={list}>
                 <li>
                     <NavLink
@@ -14,17 +14,27 @@ export function Navigation() {
                             isActive ? active : isPending ? pending : ""
                         }
                     >
-                        <h5>Counter</h5>
+                        Todo
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to="/todos"
+                        to="/contact"
                         className={({ isActive, isPending }) =>
                             isActive ? active : isPending ? pending : ""
                         }
                     >
-                        <h5>Todo</h5>
+                        Contact
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/about-me"
+                        className={({ isActive, isPending }) =>
+                            isActive ? active : isPending ? pending : ""
+                        }
+                    >
+                        About me
                     </NavLink>
                 </li>
             </ul>
