@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from "react-router-dom";
 import { Navigation } from '../components/Header/Navigation/Navigation.jsx';
 
@@ -14,5 +14,5 @@ describe('Navigation', () => {
 
         expect(title).toBeDefined();
         expect(title).not.toBeFalsy();
-    })
+    });
 })
