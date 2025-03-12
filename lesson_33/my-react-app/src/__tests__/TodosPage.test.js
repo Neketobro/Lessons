@@ -5,7 +5,7 @@ import { store } from '../store';
 import { TodosPage } from '../pages/Todos/index.jsx';
 
 describe('TodosPage', () => {
-    it('You must enter numbers and letters in the text field', () => {
+    it('should enter numbers and letters in the text field', () => {
         render(
             <MemoryRouter>
                 <Provider store={store}>
@@ -17,5 +17,8 @@ describe('TodosPage', () => {
 
         fireEvent.change(input, { target: { nameTodo: '123' } })
         expect(input.nameTodo).toBe('123');
+
+        fireEvent.change(input, { target: { nameTodo: 'Todos' } })
+        expect(input.nameTodo).toBe('Todos');
     })
 })
