@@ -30,7 +30,7 @@ export function MainPage() {
             renderHeader={() => <Header />}
             renderMain={() => (
                 <div>
-                    <p>Home Page</p>
+                    <p>Todo Page</p>
                     <input type="text" name="todo_input" ref={inputRef} />
                     <button onClick={addTodo}>Create Todo</button>
                     <ul>

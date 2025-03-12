@@ -14,7 +14,7 @@ export function Navigation({ navAttrs }) {
                             isActive ? active : isPending ? pending : ""
                         }
                     >
-                        Home
+                        Todo
                     </NavLink>
                 </li>
                 <li>
