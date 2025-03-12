@@ -21,50 +21,55 @@ describe('Main', () => {
         fireEvent.change(input, { target: { value: 'Test123' } });
         expect(input.value).toBe('Test123');
     });
+
+    it.skip('Clicking on the “Add” button without text clicks a message', () => { // ДОДЕЛАТЬ
+        render(
+            <MemoryRouter>
+                <MainPage />
+            </MemoryRouter>
+        );
+
+        const button = screen.getByText(/Create Todo/i);
+
+        fireEvent.click(button);
+        const errorMessage = screen.getByText(/Text invalid/i);
+        expect(errorMessage).toBeDefined();
+    })
+
+    it.skip('after adding a task, it appears in the list', () => {
+        render(
+            <MemoryRouter>
+                <MainPage />
+            </MemoryRouter>
+        );
+
+        const input = screen.getByPlaceholderText(/Enter name fot Todo/i);
+        const button = screen.getByText(/Create Todo/i);
+
+        fireEvent.change(input, { target: { value: 'New task' } });
+        fireEvent.click(button);
+
+        const newTask = screen.getByText(/New task/i);
+        expect(newTask).toBeDefined();
+    });
+
+    it.skip('should be removed from the list', () => {
+        render(
+            <MemoryRouter>
+                <MainPage />
+            </MemoryRouter>
+        );
+
+        const input = screen.getByPlaceholderText(/Enter name fot Todo/i);
+        const button = screen.getByText(/Create Todo/i);
+
+        fireEvent.change(input, { target: { value: 'task for deleting' } });
+        fireEvent.click(button);
+
+        const delButton = screen.getByText(/delete/i);
+        fireEvent.click(delButton);
+        const deletedTask = screen.queryByText(/task for deleting/i);
+
+        expect(deletedTask).toBeFalsy();
+    })
 });
-
-
-//3
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import App from '../App';
-
-// test('натискання на кнопку "Додати" без тексту викликає помилку', () => {
-//   render(<App />);
-//   const addButton = screen.getByText(/додати/i);
-//   fireEvent.click(addButton);
-//   const errorMessage = screen.getByText(/будь ласка, введіть текст завдання/i);
-//   expect(errorMessage).toBeInTheDocument();
-// });
-
-
-
-// 4
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import App from '../App';
-
-// test('після додавання завдання воно з\'являється у списку', () => {
-//   render(<App />);
-//   const inputElement = screen.getByPlaceholderText(/додайте нове завдання/i);
-//   const addButton = screen.getByText(/додати/i);
-//   fireEvent.change(inputElement, { target: { value: 'Нове завдання' } });
-//   fireEvent.click(addButton);
-//   const newTask = screen.getByText(/нове завдання/i);
-//   expect(newTask).toBeInTheDocument();
-// });
-
-
-//5
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import App from '../App';
-
-// test('можна видалити завдання зі списку', () => {
-//   render(<App />);
-//   const inputElement = screen.getByPlaceholderText(/додайте нове завдання/i);
-//   const addButton = screen.getByText(/додати/i);
-//   fireEvent.change(inputElement, { target: { value: 'Завдання для видалення' } });
-//   fireEvent.click(addButton);
-//   const deleteButton = screen.getByLabelText(/видалити завдання для видалення/i);
-//   fireEvent.click(deleteButton);
-//   const deletedTask = screen.queryByText(/завдання для видалення/i);
-//   expect(deletedTask).not.toBeInTheDocument();
-// });
