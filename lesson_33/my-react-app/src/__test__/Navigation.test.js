@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { Navigation } from '../components/Header/Navigation';
 
 describe('Navigation', () => {
-    it.skip('should have title Todo', () => {
+    it('should have title Todo', () => {
         render(
             <MemoryRouter>
                 <Navigation />

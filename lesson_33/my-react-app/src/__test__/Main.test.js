@@ -3,14 +3,14 @@ import { MemoryRouter } from 'react-router-dom';
 import { MainPage } from '../pages/Main/index.jsx';
 
 describe('Main', () => {
-    it.skip('should the text field can contain both numbers and letters', () => {
+    it('should the text field can contain both numbers and letters', () => {
         render(
             <MemoryRouter>
                 <MainPage />
             </MemoryRouter>
         );
 
-        const input = screen.getByPlaceholderText(/Enter name fot Todo/i);
+        const input = screen.getByPlaceholderText(/Enter name.../i);
 
         fireEvent.change(input, { target: { value: 'Test' } });
         expect(input.value).toBe('Test');
@@ -22,28 +22,28 @@ describe('Main', () => {
         expect(input.value).toBe('Test123');
     });
 
-    it.skip('Clicking on the “Add” button without text clicks a message', () => { // ДОДЕЛАТЬ
+    it('clicking on the "Send" button without text shows an error message', () => {
         render(
             <MemoryRouter>
                 <MainPage />
             </MemoryRouter>
         );
-
+    
         const button = screen.getByText(/Create Todo/i);
-
         fireEvent.click(button);
+    
         const errorMessage = screen.getByText(/Text invalid/i);
         expect(errorMessage).toBeDefined();
-    })
+    });
 
-    it.skip('after adding a task, it appears in the list', () => {
+    it('after adding a task, it appears in the list', () => {
         render(
             <MemoryRouter>
                 <MainPage />
             </MemoryRouter>
         );
 
-        const input = screen.getByPlaceholderText(/Enter name fot Todo/i);
+        const input = screen.getByPlaceholderText(/Enter name.../i);
         const button = screen.getByText(/Create Todo/i);
 
         fireEvent.change(input, { target: { value: 'New task' } });
@@ -53,14 +53,14 @@ describe('Main', () => {
         expect(newTask).toBeDefined();
     });
 
-    it.skip('should be removed from the list', () => {
+    it('should be removed from the list', () => {
         render(
             <MemoryRouter>
                 <MainPage />
             </MemoryRouter>
         );
 
-        const input = screen.getByPlaceholderText(/Enter name fot Todo/i);
+        const input = screen.getByPlaceholderText(/Enter name.../i);
         const button = screen.getByText(/Create Todo/i);
 
         fireEvent.change(input, { target: { value: 'task for deleting' } });
@@ -71,5 +71,5 @@ describe('Main', () => {
         const deletedTask = screen.queryByText(/task for deleting/i);
 
         expect(deletedTask).toBeFalsy();
-    })
+    });
 });
